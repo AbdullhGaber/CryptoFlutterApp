@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/network/api_state.dart';
 import '../../domain/repositories/market_repository.dart';
 import 'market_event.dart';
 import 'market_state.dart';
@@ -13,13 +14,15 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
 
   Future<void> _onFetchTopCoins(FetchTopCoins event, Emitter<MarketState> emit) async {
     emit(MarketLoading());
-    try {
-      final coins = await repository.getTopCoins(currency: event.currency, limit: event.limit);
-      final favoriteIds = await repository.getFavoriteIds();
 
-      emit(MarketLoaded(coins: coins, favoriteIds: favoriteIds));
-    } catch (e) {
-      emit(MarketError(message: e.toString()));
+    final result = await repository.getTopCoins(currency: event.currency, limit: event.limit);
+
+    switch (result) {
+      case ApiSuccess(:final data):
+        final favoriteIds = await repository.getFavoriteIds();
+        emit(MarketLoaded(coins: data, favoriteIds: favoriteIds));
+      case ApiError(:final message):
+        emit(MarketError(message: message));
     }
   }
 
@@ -34,4 +37,4 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
       emit(MarketLoaded(coins: currentState.coins, favoriteIds: updatedFavorites));
     }
   }
-}
+}
