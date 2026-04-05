@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../bloc/market_bloc.dart';
-import '../bloc/market_event.dart';
-import '../bloc/market_state.dart';
+import '../cubit/market_cubit.dart';
+import '../cubit/market_state.dart';
 import '../widgets/market_coin_row.dart';
 
 class FavoritesScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MarketBloc>().add(const FetchTopCoins());
+    context.read<MarketCubit>().fetchTopCoins();
   }
 
   @override
@@ -39,7 +38,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
         centerTitle: true,
       ),
-      body: BlocBuilder<MarketBloc, MarketState>(
+      body: BlocBuilder<MarketCubit, MarketState>(
         builder: (context, state) {
           if (state is MarketLoading || state is MarketInitial) {
             return const Center(
@@ -71,7 +70,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   isFavorite: true,
                   onTap: () {},
                   onFavoriteToggle: () {
-                    context.read<MarketBloc>().add(ToggleFavorite(coin));
+                    context.read<MarketCubit>().toggleFavorite(coin);
                   },
                 );
               },

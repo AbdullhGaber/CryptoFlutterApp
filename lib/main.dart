@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
-import 'features/market/presentation/bloc/market_bloc.dart';
+import 'features/market/presentation/cubit/market_cubit.dart';
 import 'di/injection_container.dart' as di;
 
 void main() async {
@@ -19,7 +19,7 @@ class TMinus1App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => di.sl<MarketBloc>(),
+      create: (_) => di.sl<MarketCubit>(),
       child:MaterialApp.router(
         title: 'tMinus1',
         debugShowCheckedModeBanner: false,

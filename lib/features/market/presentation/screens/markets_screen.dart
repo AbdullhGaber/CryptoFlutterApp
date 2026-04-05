@@ -4,9 +4,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routing/app_router.dart';
-import '../bloc/market_bloc.dart';
-import '../bloc/market_event.dart';
-import '../bloc/market_state.dart';
+import '../cubit/market_cubit.dart';
+import '../cubit/market_state.dart';
 import '../widgets/market_coin_row.dart';
 
 class MarketsScreen extends StatefulWidget {
@@ -20,7 +19,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MarketBloc>().add(const FetchTopCoins());
+    context.read<MarketCubit>().fetchTopCoins();
   }
 
   @override
@@ -51,7 +50,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
               ),
               const SizedBox(height: 24),
 
-              BlocBuilder<MarketBloc, MarketState>(
+              BlocBuilder<MarketCubit, MarketState>(
                 builder: (context, state) {
                   if (state is MarketLoading || state is MarketInitial) {
                     return const Center(
@@ -78,7 +77,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
                           isFavorite: isFavorited,
                           onTap: () {},
                           onFavoriteToggle: () {
-                            context.read<MarketBloc>().add(ToggleFavorite(coin));
+                            context.read<MarketCubit>().toggleFavorite(coin);
                           },
                         );
                       }).toList(),

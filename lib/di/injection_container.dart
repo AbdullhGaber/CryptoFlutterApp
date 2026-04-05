@@ -9,7 +9,7 @@ import '../core/network/dio_client.dart';
 import '../core/storage/database_helper.dart';
 import '../core/storage/secure_storage_manager.dart';
 import '../core/storage/shared_prefs_manager.dart';
-import '../features/market/presentation/bloc/market_bloc.dart';
+import '../features/market/presentation/cubit/market_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -41,7 +41,7 @@ Future<void> init() async {
   );
 
   sl.registerFactory(
-        () => MarketBloc(
+        () => MarketCubit(
       repository: sl(),
     ),
   );
