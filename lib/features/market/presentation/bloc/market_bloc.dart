@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/domain/repositories/repository.dart';
+import '../../domain/repositories/market_repository.dart';
 import 'market_event.dart';
 import 'market_state.dart';
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
-  final Repository repository;
+  final MarketRepository repository;
 
   MarketBloc({required this.repository}) : super(MarketInitial()) {
     on<FetchTopCoins>(_onFetchTopCoins);
