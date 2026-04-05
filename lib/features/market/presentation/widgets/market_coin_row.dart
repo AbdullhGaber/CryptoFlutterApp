@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/theme/styles/app_colors.dart';
 import '../../domain/entities/coin_entity.dart';
 
 class MarketCoinRow extends StatelessWidget {
@@ -18,8 +19,8 @@ class MarketCoinRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isUp = coin.priceChangePercentage24h >= 0;
-    final Color trendColor = isUp ? Theme.of(context).primaryColor : const Color(0xFFDD4B4B);
-    final Color mutedTextColor = const Color(0xFFA0A5BA);
+    final Color trendColor = isUp ? Theme.of(context).primaryColor : AppRawColors.errorDark;
+    final Color mutedTextColor = AppRawColors.textSecondaryDark;
 
     return InkWell(
       onTap: onTap,
@@ -91,7 +92,7 @@ class MarketCoinRow extends StatelessWidget {
               onTap: onFavoriteToggle,
               child: Icon(
                 isFavorite ? Icons.star : Icons.star_border,
-                color: isFavorite ? const Color(0xFFFFCA28) : mutedTextColor,
+                color: isFavorite ? AppRawColors.favoriteDark : mutedTextColor,
                 size: 24,
               ),
             ),

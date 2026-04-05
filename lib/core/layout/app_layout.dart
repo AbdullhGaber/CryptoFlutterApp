@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../theme/styles/app_colors.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/market/presentation/screens/markets_screen.dart';
 import '../../features/activity/presentation/screens/activity_screen.dart';
@@ -23,12 +24,12 @@ class _AppLayoutState extends State<AppLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final navBackgroundColor = const Color(0xFF1B232A);
+    final navBackgroundColor = AppRawColors.backgroundDark;
     final activeColor = Theme.of(context).primaryColor;
-    final inactiveColor = const Color(0xFFA0A5BA);
+    final inactiveColor = AppRawColors.textSecondaryDark;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: AppRawColors.backgroundLight,
       extendBody: true,
       body: Stack(
         children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/theme/styles/app_colors.dart';
 import '../models/activity_model.dart';
 
 class ActivityRowItem extends StatelessWidget {
@@ -13,7 +14,7 @@ class ActivityRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mutedTextColor = const Color(0xFFA0A5BA);
+    final mutedTextColor = AppRawColors.textSecondaryDark;
     final tradeColor = activity.type.getColor(context);
     final statusColor = activity.status.getColor(context);
 

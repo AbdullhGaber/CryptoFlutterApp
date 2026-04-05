@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
+import 'styles/app_colors.dart';
 
 class AppTheme {
-  static const Color primaryMint = Color(0xFF5ED5A8);
-  static const Color backgroundDark = Color(0xFF1B232A);
-  static const Color surfaceColor = Color(0xFF161C22);
-  static const Color textWhite = Colors.white;
-  static const Color textGrey = Color(0xFFA0A5BA);
-
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primaryColor: primaryMint,
-      scaffoldBackgroundColor: backgroundDark,
+      primaryColor: AppRawColors.primaryDark,
+      scaffoldBackgroundColor: AppRawColors.backgroundDark,
+
+      colorScheme: const ColorScheme.dark(
+        primary: AppRawColors.primaryDark,
+        secondary: AppRawColors.secondaryDark,
+        surface: AppRawColors.surfaceDark,
+        error: AppRawColors.errorDark,
+        onPrimary: AppRawColors.textPrimaryDark,
+        onSecondary: AppRawColors.textSecondaryDark,
+      ),
+
+      cardColor: AppRawColors.cardDark,
+      iconTheme: const IconThemeData(color: AppRawColors.iconDark),
+
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppRawColors.surfaceDark,
+        iconTheme: IconThemeData(color: AppRawColors.iconDark),
+      ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryMint,
-          foregroundColor: backgroundDark,
+          backgroundColor: AppRawColors.primaryDark,
+          foregroundColor: AppRawColors.backgroundDark,
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -30,7 +42,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
-          foregroundColor: backgroundDark,
+          foregroundColor: AppRawColors.backgroundDark,
           side: BorderSide.none,
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(
@@ -42,8 +54,8 @@ class AppTheme {
 
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: surfaceColor,
-        hintStyle: const TextStyle(color: textGrey, fontSize: 14),
+        fillColor: AppRawColors.surfaceDark,
+        hintStyle: const TextStyle(color: AppRawColors.textSecondaryDark, fontSize: 14),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -55,16 +67,80 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: primaryMint, width: 1),
+          borderSide: const BorderSide(color: AppRawColors.primaryDark, width: 1),
         ),
       ),
 
+      textTheme: const TextTheme(
+        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryDark),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryDark),
+        bodyLarge: TextStyle(fontSize: 16, color: AppRawColors.textPrimaryDark),
+        bodyMedium: TextStyle(fontSize: 14, color: AppRawColors.textSecondaryDark),
+      ),
+    );
+  }
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      primaryColor: AppRawColors.primaryLight,
+      scaffoldBackgroundColor: AppRawColors.backgroundLight,
+
+      colorScheme: const ColorScheme.light(
+        primary: AppRawColors.primaryLight,
+        secondary: AppRawColors.secondaryLight,
+        surface: AppRawColors.surfaceLight,
+        error: AppRawColors.errorLight,
+        onPrimary: AppRawColors.textPrimaryLight,
+        onSecondary: AppRawColors.textSecondaryLight,
+      ),
+
+      cardColor: AppRawColors.cardLight,
+      iconTheme: const IconThemeData(color: AppRawColors.iconLight),
+
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppRawColors.surfaceLight,
+        iconTheme: IconThemeData(color: AppRawColors.iconLight),
+      ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppRawColors.primaryLight,
+          foregroundColor: AppRawColors.textPrimaryLight,
+          minimumSize: const Size(double.infinity, 56),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          elevation: 0,
+        ),
+      ),
+
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppRawColors.surfaceVariantLight,
+        hintStyle: const TextStyle(color: AppRawColors.textSecondaryLight, fontSize: 14),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppRawColors.primaryLight, width: 1),
+        ),
+      ),
 
       textTheme: const TextTheme(
-        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: textWhite),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: textWhite),
-        bodyLarge: TextStyle(fontSize: 16, color: textWhite),
-        bodyMedium: TextStyle(fontSize: 14, color: textGrey),
+        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryLight),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryLight),
+        bodyLarge: TextStyle(fontSize: 16, color: AppRawColors.textPrimaryLight),
+        bodyMedium: TextStyle(fontSize: 14, color: AppRawColors.textSecondaryLight),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart'; // Adjust path
 import '../models/activity_model.dart';
 import '../widgets/activity_row_item.dart';
@@ -64,7 +65,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
 
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF161C22),
+                  color: AppRawColors.surfaceDark,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -107,7 +108,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
         child: Row(
           children: [
-            Icon(icon, color: const Color(0xFFA0A5BA), size: 24),
+            Icon(icon, color: AppRawColors.textSecondaryDark, size: 24),
             const SizedBox(width: 16),
             Text(
               title,
@@ -118,7 +119,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
               ),
             ),
             const Spacer(),
-            const Icon(Icons.arrow_forward, color: Color(0xFFA0A5BA), size: 20),
+            const Icon(Icons.arrow_forward, color: AppRawColors.textSecondaryDark, size: 20),
           ],
         ),
       ),
@@ -127,7 +128,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
 
   Widget _buildDivider() {
     return const Divider(
-      color: Color(0xFF262A34),
+      color: AppRawColors.surfaceVariantDark,
       height: 1,
       thickness: 1,
       indent: 60,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import '../cubit/market_cubit.dart';
 import '../cubit/market_state.dart';
@@ -42,7 +43,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         builder: (context, state) {
           if (state is MarketLoading || state is MarketInitial) {
             return const Center(
-              child: CircularProgressIndicator(color: Color(0xFF5ED5A8)),
+              child: CircularProgressIndicator(color: AppRawColors.primaryDark),
             );
           } else if (state is MarketError) {
             return Center(
@@ -83,7 +84,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 
   Widget _buildEmptyState(BuildContext context) {
-    final mutedTextColor = const Color(0xFFA0A5BA);
+    final mutedTextColor = AppRawColors.textSecondaryDark;
     final primaryMint = Theme.of(context).primaryColor;
 
     return Center(
@@ -128,7 +129,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             ElevatedButton(
               onPressed: () => context.pop(),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF262A34),
+                backgroundColor: AppRawColors.surfaceVariantDark,
                 foregroundColor: Colors.white,
                 elevation: 0,
                 minimumSize: const Size(200, 56),

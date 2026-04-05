@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF131B24),
+      backgroundColor: AppRawColors.splashDark,
       body: Stack(
         fit: StackFit.expand,
         children: [

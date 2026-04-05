@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../market/presentation/models/market_coin_type.dart';
 
@@ -14,7 +15,7 @@ class WalletCoinRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color mutedTextColor = const Color(0xFFA0A5BA);
+    final Color mutedTextColor = AppRawColors.textSecondaryDark;
 
     return InkWell(
       onTap: onTap,

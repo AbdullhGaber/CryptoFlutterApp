@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routing/app_router.dart';
 import '../cubit/market_cubit.dart';
@@ -36,7 +37,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
               Container(
                 height: 48,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF161C22),
+                  color: AppRawColors.surfaceDark,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
@@ -56,7 +57,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
                     return const Center(
                       child: Padding(
                         padding: EdgeInsets.all(32.0),
-                        child: CircularProgressIndicator(color: Color(0xFF5ED5A8)),
+                        child: CircularProgressIndicator(color: AppRawColors.primaryDark),
                       ),
                     );
                   } else if (state is MarketError) {
@@ -91,7 +92,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
 
               DottedBorder(
                 options: const RoundedRectDottedBorderOptions(
-                  color: Color(0xFF262A34),
+                  color: AppRawColors.surfaceVariantDark,
                   strokeWidth: 2,
                   dashPattern: [8, 4],
                   radius: Radius.circular(16),
@@ -108,12 +109,12 @@ class _MarketsScreenState extends State<MarketsScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.star_outline, color: Color(0xFFA0A5BA)),
+                        Icon(Icons.star_outline, color: AppRawColors.textSecondaryDark),
                         SizedBox(width: 8),
                         Text(
                           'View Favorites',
                           style: TextStyle(
-                            color: Color(0xFFA0A5BA),
+                            color: AppRawColors.textSecondaryDark,
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                           ),
@@ -135,13 +136,13 @@ class _MarketsScreenState extends State<MarketsScreen> {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isActive ? const Color(0xFF262A34) : Colors.transparent,
+          color: isActive ? AppRawColors.surfaceVariantDark : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: isActive ? Colors.white : const Color(0xFFA0A5BA),
+            color: isActive ? Colors.white : AppRawColors.textSecondaryDark,
             fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
             fontSize: 14,
           ),

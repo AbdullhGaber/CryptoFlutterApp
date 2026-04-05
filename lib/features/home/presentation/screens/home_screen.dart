@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/layout/widgets/app_layout_header.dart';
+import '../../../../core/theme/styles/app_colors.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkHeaderColor = const Color(0xFF1B232A);
+    final darkHeaderColor = AppRawColors.backgroundDark;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.only(bottom: 120),
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           ),
 
           Container(
-            color: const Color(0xFFF8F9FA), // Off-white body
+            color: AppRawColors.backgroundLight, // Off-white body
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +97,7 @@ class HomeScreen extends StatelessWidget {
           scale: 1.8,
           child: SvgPicture.asset(
             iconPath,
-            colorFilter: const ColorFilter.mode(Color(0xFF5ED5A8), BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(AppRawColors.primaryDark, BlendMode.srcIn),
             height: 28,
             width: 28,
           )
@@ -105,7 +106,7 @@ class HomeScreen extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            color: Color(0xFFA0A5BA),
+            color: AppRawColors.textSecondaryDark,
             fontSize: 11,
           ),
           textAlign: TextAlign.center,
@@ -157,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1B232A),
+                    color: AppRawColors.backgroundDark,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -165,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle,
                   style: const TextStyle(
                     fontSize: 13,
-                    color: Color(0xFFA0A5BA),
+                    color: AppRawColors.textSecondaryDark,
                   ),
                 ),
               ],
@@ -175,10 +176,10 @@ class HomeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFFF8F9FA),
+              color: AppRawColors.backgroundLight,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.arrow_forward, size: 16, color: Color(0xFFA0A5BA)),
+            child: const Icon(Icons.arrow_forward, size: 16, color: AppRawColors.textSecondaryDark),
           )
         ],
       ),

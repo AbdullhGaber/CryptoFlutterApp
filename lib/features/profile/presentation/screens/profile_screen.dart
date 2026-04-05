@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/storage/secure_storage_manager.dart';
@@ -66,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                     future: context.read<SecureStorageManager>().getCredentials(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator(color: Color(0xFF5ED5A8)));
+                        return const Center(child: CircularProgressIndicator(color: AppRawColors.primaryDark));
                       }
 
                       final email = snapshot.data?['email'] ?? 'No email saved';

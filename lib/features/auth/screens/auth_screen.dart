@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/routing/app_router.dart';
@@ -40,7 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
               Container(
                 height: 48,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF161C22),
+                  color: AppRawColors.surfaceDark,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Row(
@@ -138,7 +139,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       IconButton(
                         iconSize: 48,
-                        icon: const Icon(Icons.fingerprint, color: Color(0xFF5ED5A8)),
+                        icon: Icon(Icons.fingerprint, color: AppRawColors.primaryDark),
                         onPressed: () {}, // Handle biometric auth
                       ),
                       const SizedBox(height: 8),
@@ -163,7 +164,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF1B232A) : Colors.transparent, // Slightly lighter if selected
+            color: isSelected ? AppRawColors.backgroundDark : Colors.transparent, // Slightly lighter if selected
             borderRadius: BorderRadius.circular(24),
             boxShadow: isSelected
                 ? [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 4, offset: const Offset(0, 2))]
@@ -172,7 +173,7 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Text(
             title,
             style: TextStyle(
-              color: isSelected ? Colors.white : const Color(0xFFA0A5BA),
+              color: isSelected ? Colors.white : AppRawColors.textSecondaryDark,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               fontSize: 14,
             ),

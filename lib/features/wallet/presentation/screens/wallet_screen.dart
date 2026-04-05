@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import '../../../market/presentation/models/market_coin_type.dart';
 import '../widgets/wallet_coin_row.dart';
 
@@ -8,8 +9,8 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryMint = Theme.of(context).primaryColor;
-    final mutedTextColor = const Color(0xFFA0A5BA);
-    final surfaceDark = const Color(0xFF161C22);
+    final mutedTextColor = AppRawColors.textSecondaryDark;
+    final surfaceDark = AppRawColors.surfaceDark;
 
     return Scaffold(
       body: Stack(
@@ -102,21 +103,21 @@ class WalletScreen extends StatelessWidget {
                           title: 'Deposit', 
                           isActive: true, 
                           activeColor: primaryMint, 
-                          activeTextColor: const Color(0xFF1B232A),
+                          activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
                         _buildActionTab(
                           title: 'Withdraw', 
                           isActive: false, 
                           activeColor: primaryMint, 
-                          activeTextColor: const Color(0xFF1B232A),
+                          activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
                         _buildActionTab(
                           title: 'Transfer', 
                           isActive: false, 
                           activeColor: primaryMint, 
-                          activeTextColor: const Color(0xFF1B232A),
+                          activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
                       ],

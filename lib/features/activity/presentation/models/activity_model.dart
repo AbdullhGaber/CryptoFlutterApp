@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/theme/styles/app_colors.dart';
 
 enum TradeType {
   buy,
@@ -9,7 +10,7 @@ enum TradeType {
   Color getColor(BuildContext context) {
     return this == TradeType.buy
         ? Theme.of(context).primaryColor
-        : const Color(0xFFDD4B4B);
+        : AppRawColors.errorDark;
   }
 }
 
@@ -22,7 +23,7 @@ enum OrderStatus {
   Color getColor(BuildContext context) {
     return this == OrderStatus.filled
         ? Theme.of(context).primaryColor
-        : const Color(0xFFDD4B4B);
+        : AppRawColors.errorDark;
   }
 }
 
