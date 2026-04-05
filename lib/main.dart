@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
-import 'core/theme/app_theme.dart';
+import 'package:flutter_project_2/core/theme/mode/cubit/theme_cubit.dart';
+import 'package:flutter_project_2/core/theme/mode/cubit/theme_states.dart';
 import 'features/market/presentation/cubit/market_cubit.dart';
 import 'di/injection_container.dart' as di;
 
@@ -18,15 +19,22 @@ class TMinus1App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => di.sl<MarketCubit>(),
-      child:MaterialApp.router(
-        title: 'tMinus1',
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
-        darkTheme: AppTheme.darkTheme,
-        routerConfig: AppRouter.router,
-      ) ,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ThemeCubit()),
+        BlocProvider(create: (_) => di.sl<MarketCubit>()),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeStates>(
+        builder: (context, state) {
+          final themeCubit = context.read<ThemeCubit>();
+          return MaterialApp.router(
+            title: 'tMinus1',
+            debugShowCheckedModeBanner: false,
+            theme: themeCubit.themeData,
+            routerConfig: AppRouter.router,
+          );
+        },
+      ),
     );
   }
 }
