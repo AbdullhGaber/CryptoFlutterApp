@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter_project_2/features/market/data/data_sources/market_local_data_source.dart';
 import 'package:flutter_project_2/features/market/data/data_sources/market_remote_data_source.dart';
 import 'package:flutter_project_2/features/market/data/repositories/market_repository_impl.dart';
@@ -64,6 +65,12 @@ Future<void> init() async {
   sl.registerFactory(
         () => MarketCubit(
       repository: sl(),
+    ),
+  );
+
+  sl.registerFactory(
+        () => HomeCubit(
+      marketRepository: sl(),
     ),
   );
 }
