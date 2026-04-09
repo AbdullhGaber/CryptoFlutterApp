@@ -91,7 +91,6 @@ class _AppLayoutState extends State<AppLayout> {
               width: 28,
             ),
           ),
-          const SizedBox(height: 6),
           Text(
             label,
             style: TextStyle(

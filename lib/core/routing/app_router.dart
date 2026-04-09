@@ -3,9 +3,9 @@ import 'package:flutter_project_2/features/auth/screens/auth_screen.dart';
 import 'package:flutter_project_2/features/splash/screens/splash_screen.dart';
 import 'package:flutter_project_2/features/profile/presentation/screens/settings_screen.dart';
 import 'package:flutter_project_2/features/profile/presentation/screens/profile_screen.dart';
+import 'package:flutter_project_2/features/market/presentation/screens/favorites_screen.dart';
+import 'package:flutter_project_2/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/market/presentation/screens/favorites_screen.dart';
-import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 
 class AppRouter {
   static const String splash = '/';

@@ -8,7 +8,7 @@ class AppTheme {
       brightness: Brightness.dark,
       primaryColor: AppRawColors.primaryDark,
       scaffoldBackgroundColor: AppRawColors.backgroundDark,
-
+      fontFamily: 'NeueMontreal',
       colorScheme: const ColorScheme.dark(
         primary: AppRawColors.primaryDark,
         secondary: AppRawColors.secondaryDark,
@@ -86,7 +86,7 @@ class AppTheme {
       brightness: Brightness.light,
       primaryColor: AppRawColors.primaryLight,
       scaffoldBackgroundColor: AppRawColors.backgroundLight,
-
+      fontFamily: 'NeueMontreal',
       colorScheme: const ColorScheme.light(
         primary: AppRawColors.primaryLight,
         secondary: AppRawColors.secondaryLight,
