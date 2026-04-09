@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/widgets/build_sparkline.dart';
 import '../../../../core/theme/styles/app_colors.dart';
 import '../../domain/entities/coin_entity.dart';
 
@@ -35,9 +36,8 @@ class MarketCoinRow extends StatelessWidget {
               errorBuilder: (context, error, stackTrace) => const Icon(Icons.error, color: Colors.grey),
             ),
             const SizedBox(width: 16),
-
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -57,16 +57,15 @@ class MarketCoinRow extends StatelessWidget {
             ),
 
             Expanded(
-              flex: 2,
-              child: Icon(
-                isUp ? Icons.trending_up : Icons.trending_down,
-                color: trendColor,
-                size: 32,
+              flex: 3,
+              child: SizedBox(
+                height: 40,
+                child: buildSparkline(trendColor, coin),
               ),
             ),
 
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
