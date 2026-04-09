@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routing/app_router.dart';
 import '../cubit/market_cubit.dart';
@@ -28,17 +29,22 @@ class _MarketsScreenState extends State<MarketsScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 16.0, bottom: 120.0),
+          padding: EdgeInsets.only(
+            left: Responsive.padding(context, 24),
+            right: Responsive.padding(context, 24),
+            top: Responsive.padding(context, 16),
+            bottom: Responsive.padding(context, 120),
+          ),
           child: Column(
             children: [
               appLayoutHeader(context),
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               Container(
-                height: 48,
+                height: Responsive.value(context, 48),
                 decoration: BoxDecoration(
                   color: AppRawColors.surfaceDark,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
                 ),
                 child: Row(
                   children: [
@@ -49,15 +55,15 @@ class _MarketsScreenState extends State<MarketsScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: Responsive.value(context, 24)),
 
               BlocBuilder<MarketCubit, MarketState>(
                 builder: (context, state) {
                   if (state is MarketLoading || state is MarketInitial) {
-                    return const Center(
+                    return Center(
                       child: Padding(
-                        padding: EdgeInsets.all(32.0),
-                        child: CircularProgressIndicator(color: AppRawColors.primaryDark),
+                        padding: EdgeInsets.all(Responsive.padding(context, 32)),
+                        child: const CircularProgressIndicator(color: AppRawColors.primaryDark),
                       ),
                     );
                   } else if (state is MarketError) {
@@ -88,35 +94,35 @@ class _MarketsScreenState extends State<MarketsScreen> {
                 },
               ),
 
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               DottedBorder(
-                options: const RoundedRectDottedBorderOptions(
+                options: RoundedRectDottedBorderOptions(
                   color: AppRawColors.surfaceVariantDark,
                   strokeWidth: 2,
                   dashPattern: [8, 4],
-                  radius: Radius.circular(16),
+                  radius: Radius.circular(Responsive.value(context, 16)),
                   padding: EdgeInsets.zero,
                 ),
                 child: InkWell(
                   onTap: () {
                     context.push(AppRouter.favorites);
                   },
-                  borderRadius: BorderRadius.circular(16),
-                  child: const SizedBox(
-                    height: 60,
+                  borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
+                  child: SizedBox(
+                    height: Responsive.value(context, 60),
                     width: double.infinity,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.star_outline, color: AppRawColors.textSecondaryDark),
-                        SizedBox(width: 8),
+                        Icon(Icons.star_outline, color: AppRawColors.textSecondaryDark, size: Responsive.icon(context, 24)),
+                        SizedBox(width: Responsive.value(context, 8)),
                         Text(
                           'View Favorites',
                           style: TextStyle(
                             color: AppRawColors.textSecondaryDark,
                             fontWeight: FontWeight.w500,
-                            fontSize: 16,
+                            fontSize: Responsive.text(context, 16),
                           ),
                         ),
                       ],
@@ -137,14 +143,14 @@ class _MarketsScreenState extends State<MarketsScreen> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isActive ? AppRawColors.surfaceVariantDark : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
         ),
         child: Text(
           title,
           style: TextStyle(
             color: isActive ? Colors.white : AppRawColors.textSecondaryDark,
             fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-            fontSize: 14,
+            fontSize: Responsive.text(context, 14),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_project_2/features/profile/utils/SettingsItemType.dart';
 import 'package:go_router/go_router.dart';
 import '../widgets/setting_row_item.dart';
@@ -22,14 +23,17 @@ class SettingsScreen extends StatelessWidget {
         title: Text(
           'Settings',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontSize: 22,
+            fontSize: Responsive.text(context, 22),
           ),
         ),
         centerTitle: false,
         titleSpacing: 0,
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: Responsive.padding(context, 24),
+          vertical: Responsive.padding(context, 16),
+        ),
         children: SettingsItemType.values.map(
             (e) {
               return SettingRowItem(

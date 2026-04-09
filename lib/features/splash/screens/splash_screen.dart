@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -50,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           Center(
             child: Lottie.asset(
               'assets/lottie/splash.json',
-              width: 220,
+              width: Responsive.value(context, 220),
               controller: _animationController,
               onLoaded: (composition) {
                 _animationController

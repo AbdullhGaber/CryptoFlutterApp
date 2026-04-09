@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 
 class ProfileAvatar extends StatelessWidget {
   final String imagePath;
@@ -13,7 +14,7 @@ class ProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(4),
+      padding: EdgeInsets.all(Responsive.value(context, 4)),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: LinearGradient(
@@ -26,7 +27,7 @@ class ProfileAvatar extends StatelessWidget {
         ),
       ),
       child: CircleAvatar(
-        radius: radius,
+        radius: Responsive.value(context, radius),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
         backgroundImage: AssetImage(imagePath),
       ),

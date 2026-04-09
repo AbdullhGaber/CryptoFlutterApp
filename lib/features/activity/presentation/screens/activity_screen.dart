@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
-import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart'; // Adjust path
+import 'package:flutter_project_2/core/helpers/responsive.dart';
+import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart';
 import '../models/activity_model.dart';
 import '../widgets/activity_row_item.dart';
 
@@ -56,19 +57,24 @@ class _ActivityScreenState extends State<ActivityScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 16.0, bottom: 120.0),
+          padding: EdgeInsets.only(
+            left: Responsive.padding(context, 24),
+            right: Responsive.padding(context, 24),
+            top: Responsive.padding(context, 16),
+            bottom: Responsive.padding(context, 120),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               appLayoutHeader(context),
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               Container(
                 decoration: BoxDecoration(
                   color: AppRawColors.surfaceDark,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 8)),
                 child: Column(
                   children: [
                     _buildQuickActionRow(Icons.monetization_on, 'Deposit'),
@@ -80,16 +86,16 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               Text(
                 'Recent Activity',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontSize: 20,
+                  fontSize: Responsive.text(context, 20),
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: Responsive.value(context, 16)),
               ..._activities.map((activity) => ActivityRowItem(
                 activity: activity,
                 onTap: () {},
@@ -105,21 +111,24 @@ class _ActivityScreenState extends State<ActivityScreen> {
     return InkWell(
       onTap: () {},
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: Responsive.padding(context, 20),
+          vertical: Responsive.padding(context, 16),
+        ),
         child: Row(
           children: [
-            Icon(icon, color: AppRawColors.textSecondaryDark, size: 24),
-            const SizedBox(width: 16),
+            Icon(icon, color: AppRawColors.textSecondaryDark, size: Responsive.icon(context, 24)),
+            SizedBox(width: Responsive.value(context, 16)),
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
-                fontSize: 16,
+                fontSize: Responsive.text(context, 16),
                 fontWeight: FontWeight.w500,
               ),
             ),
             const Spacer(),
-            const Icon(Icons.arrow_forward, color: AppRawColors.textSecondaryDark, size: 20),
+            Icon(Icons.arrow_forward, color: AppRawColors.textSecondaryDark, size: Responsive.icon(context, 20)),
           ],
         ),
       ),
@@ -127,12 +136,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
   }
 
   Widget _buildDivider() {
-    return const Divider(
+    return Divider(
       color: AppRawColors.surfaceVariantDark,
       height: 1,
       thickness: 1,
-      indent: 60,
-      endIndent: 20,
+      indent: Responsive.value(context, 60),
+      endIndent: Responsive.value(context, 20),
     );
   }
 }

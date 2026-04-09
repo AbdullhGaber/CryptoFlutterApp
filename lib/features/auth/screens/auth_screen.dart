@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/routing/app_router.dart';
@@ -33,16 +34,19 @@ class _AuthScreenState extends State<AuthScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: Responsive.padding(context, 24),
+            vertical: Responsive.padding(context, 16),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24),
+              SizedBox(height: Responsive.value(context, 24)),
               Container(
-                height: 48,
+                height: Responsive.value(context, 48),
                 decoration: BoxDecoration(
                   color: AppRawColors.surfaceDark,
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Responsive.value(context, 24)),
                 ),
                 child: Row(
                   children: [
@@ -51,13 +55,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: Responsive.value(context, 40)),
 
               Text(
                 _isSignIn ? 'Sign in' : 'Sign up',
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
               CustomTextField(
                 controller: _emailController,
                 label: _isEmailMode ? 'Email' : 'Mobile Number',
@@ -67,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     : (_isEmailMode ? 'Register with mobile' : 'Register with email'),
                 onActionTap: () => setState(() => _isEmailMode = !_isEmailMode),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: Responsive.value(context, 24)),
 
               CustomTextField(
                 controller: _passwordController,
@@ -75,7 +79,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 hintText: 'Enter your password',
                 isPassword: true,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: Responsive.value(context, 16)),
 
               if (_isSignIn)
                 GestureDetector(
@@ -84,12 +88,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     'Forgot password?',
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
-                      fontSize: 14,
+                      fontSize: Responsive.text(context, 14),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               ElevatedButton(
                 onPressed: () async {
@@ -107,7 +111,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 },
                 child: Text(_isSignIn ? 'Sign in' : 'Sign up'),
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: Responsive.value(context, 32)),
 
               Center(
                 child: Text(
@@ -115,7 +119,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: Responsive.value(context, 16)),
               Row(
                 children: [
                   SocialButton(
@@ -123,7 +127,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     iconPath: 'assets/images/facebook_icon.png',
                     onPressed: () {},
                   ),
-                  const SizedBox(width: 16),
+                  SizedBox(width: Responsive.value(context, 16)),
                   SocialButton(
                     text: 'Google',
                     iconPath: 'assets/images/google_icon.png',
@@ -131,18 +135,18 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: Responsive.value(context, 48)),
 
               if (_isSignIn)
                 Center(
                   child: Column(
                     children: [
                       IconButton(
-                        iconSize: 48,
+                        iconSize: Responsive.icon(context, 48),
                         icon: Icon(Icons.fingerprint, color: AppRawColors.primaryDark),
                         onPressed: () {}, // Handle biometric auth
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: Responsive.value(context, 8)),
                       Text(
                         'Use fingerprint instead?',
                         style: Theme.of(context).textTheme.bodyMedium,
@@ -164,10 +168,10 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: isSelected ? AppRawColors.backgroundDark : Colors.transparent, // Slightly lighter if selected
-            borderRadius: BorderRadius.circular(24),
+            color: isSelected ? AppRawColors.backgroundDark : Colors.transparent,
+            borderRadius: BorderRadius.circular(Responsive.value(context, 24)),
             boxShadow: isSelected
-                ? [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 4, offset: const Offset(0, 2))]
+                ? [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: Responsive.value(context, 4), offset: Offset(0, Responsive.value(context, 2)))]
                 : [],
           ),
           child: Text(
@@ -175,7 +179,7 @@ class _AuthScreenState extends State<AuthScreen> {
             style: TextStyle(
               color: isSelected ? Colors.white : AppRawColors.textSecondaryDark,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              fontSize: 14,
+              fontSize: Responsive.text(context, 14),
             ),
           ),
         ),

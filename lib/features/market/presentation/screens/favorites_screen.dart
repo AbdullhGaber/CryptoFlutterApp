@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 import '../cubit/market_cubit.dart';
 import '../cubit/market_state.dart';
@@ -34,7 +35,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         title: Text(
           'Favorites',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontSize: 22,
+            fontSize: Responsive.text(context, 22),
           ),
         ),
         centerTitle: true,
@@ -61,7 +62,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             }
 
             return ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+              padding: EdgeInsets.symmetric(
+                horizontal: Responsive.padding(context, 24),
+                vertical: Responsive.padding(context, 16),
+              ),
               itemCount: favoriteCoins.length,
               itemBuilder: (context, index) {
                 final coin = favoriteCoins[index];
@@ -89,52 +93,52 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+        padding: EdgeInsets.symmetric(horizontal: Responsive.padding(context, 40)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(24),
+              padding: EdgeInsets.all(Responsive.padding(context, 24)),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: primaryMint.withValues(alpha: 0.1),
               ),
               child: Icon(
                 Icons.star_outline,
-                size: 64,
+                size: Responsive.icon(context, 64),
                 color: primaryMint,
               ),
             ),
-            const SizedBox(height: 32),
+            SizedBox(height: Responsive.value(context, 32)),
 
             Text(
               'No Favorites Yet',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontSize: 24,
+                fontSize: Responsive.text(context, 24),
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: Responsive.value(context, 12)),
 
             Text(
               'Keep track of the coins you love by tapping the star icon in the market.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: mutedTextColor,
-                fontSize: 16,
+                fontSize: Responsive.text(context, 16),
                 height: 1.5,
               ),
             ),
-            const SizedBox(height: 48),
+            SizedBox(height: Responsive.value(context, 48)),
             ElevatedButton(
               onPressed: () => context.pop(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppRawColors.surfaceVariantDark,
                 foregroundColor: Colors.white,
                 elevation: 0,
-                minimumSize: const Size(200, 56),
+                minimumSize: Size(Responsive.value(context, 200), Responsive.value(context, 56)),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
                 ),
               ),
               child: const Text('Explore Market'),

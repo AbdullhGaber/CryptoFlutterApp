@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/widgets/build_sparkline.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import '../../../../core/theme/styles/app_colors.dart';
 import '../../domain/entities/coin_entity.dart';
 
@@ -26,16 +27,16 @@ class MarketCoinRow extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 16)),
         child: Row(
           children: [
             Image.network(
               coin.image,
-              height: 40,
-              width: 40,
+              height: Responsive.value(context, 40),
+              width: Responsive.value(context, 40),
               errorBuilder: (context, error, stackTrace) => const Icon(Icons.error, color: Colors.grey),
             ),
-            const SizedBox(width: 16),
+            SizedBox(width: Responsive.value(context, 16)),
             Expanded(
               flex: 3,
               child: Column(
@@ -47,7 +48,7 @@ class MarketCoinRow extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: Responsive.value(context, 4)),
                   Text(
                     coin.symbol,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: mutedTextColor),
@@ -59,7 +60,7 @@ class MarketCoinRow extends StatelessWidget {
             Expanded(
               flex: 3,
               child: SizedBox(
-                height: 40,
+                height: Responsive.value(context, 40),
                 child: buildSparkline(trendColor, coin),
               ),
             ),
@@ -73,7 +74,7 @@ class MarketCoinRow extends StatelessWidget {
                     '\$${coin.currentPrice.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: Responsive.value(context, 4)),
                   Text(
                     '${isUp ? '+' : ''}${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -85,14 +86,14 @@ class MarketCoinRow extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(width: 8),
+            SizedBox(width: Responsive.value(context, 8)),
 
             GestureDetector(
               onTap: onFavoriteToggle,
               child: Icon(
                 isFavorite ? Icons.star : Icons.star_border,
                 color: isFavorite ? AppRawColors.favoriteDark : mutedTextColor,
-                size: 24,
+                size: Responsive.icon(context, 24),
               ),
             ),
           ],

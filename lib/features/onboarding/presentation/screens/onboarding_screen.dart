@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 import '../models/onboarding_item.dart';
 import '../widgets/onboarding_page_content.dart';
@@ -80,7 +81,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 48),
+                  padding: EdgeInsets.fromLTRB(
+                    Responsive.padding(context, 24),
+                    0,
+                    Responsive.padding(context, 24),
+                    Responsive.padding(context, 48),
+                  ),
                   child: Column(
                     children: [
                       Row(
@@ -89,9 +95,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           _pages.length,
                           (index) => AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            margin: const EdgeInsets.symmetric(horizontal: 4),
-                            height: 8,
-                            width: _currentIndex == index ? 8 : 8,
+                            margin: EdgeInsets.symmetric(horizontal: Responsive.value(context, 4)),
+                            height: Responsive.value(context, 8),
+                            width: Responsive.value(context, 8),
                             decoration: BoxDecoration(
                               color: _currentIndex == index
                                   ? Theme.of(context).primaryColor
@@ -102,21 +108,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                       
-                      const SizedBox(height: 32),
+                      SizedBox(height: Responsive.value(context, 32)),
                       Container(
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                               color: Theme.of(context).primaryColor.withValues(alpha: 0.2),
-                              blurRadius: 20,
-                              offset: const Offset(0, 8),
+                              blurRadius: Responsive.value(context, 20),
+                              offset: Offset(0, Responsive.value(context, 8)),
                             ),
                           ],
                         ),
                         child: ElevatedButton(
                           onPressed: _onNextPressed,
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(200, 56), 
+                            minimumSize: Size(Responsive.value(context, 200), Responsive.value(context, 56)), 
                           ),
                           child: Text(
                             _currentIndex == _pages.length - 1 ? 'Get Started' : 'Next',

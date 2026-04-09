@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../market/presentation/models/market_coin_type.dart';
 
@@ -20,15 +21,15 @@ class WalletCoinRow extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 16)),
         child: Row(
           children: [
             SvgPicture.asset(
               coin.getIconPath(),
-              height: 40,
-              width: 40,
+              height: Responsive.value(context, 40),
+              width: Responsive.value(context, 40),
             ),
-            const SizedBox(width: 16),
+            SizedBox(width: Responsive.value(context, 16)),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +40,7 @@ class WalletCoinRow extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: Responsive.value(context, 4)),
                   Text(
                     coin.getSymbol(),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -58,7 +59,7 @@ class WalletCoinRow extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: Responsive.value(context, 4)),
                 Text(
                   coin.getFiatBalance(),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(

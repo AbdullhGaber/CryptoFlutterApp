@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 
 class ProfileRowItem extends StatelessWidget {
   final String label;
@@ -16,9 +17,12 @@ class ProfileRowItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(Responsive.value(context, 12)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0),
+        padding: EdgeInsets.symmetric(
+          vertical: Responsive.padding(context, 24),
+          horizontal: Responsive.padding(context, 24),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,11 +38,11 @@ class ProfileRowItem extends StatelessWidget {
                   value,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: Responsive.value(context, 12)),
                 Icon(
                   Icons.arrow_forward,
                   color: Theme.of(context).textTheme.bodyMedium?.color,
-                  size: 20,
+                  size: Responsive.icon(context, 20),
                 ),
               ],
             ),

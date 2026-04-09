@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/styles/app_colors.dart';
+import '../../core/helpers/responsive.dart';
 
 class CustomTextField extends StatefulWidget {
   final String label;
@@ -45,14 +46,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   widget.actionText!,
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontSize: 14,
+                    fontSize: Responsive.text(context, 14),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
           ],
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: Responsive.value(context, 8)),
 
         TextFormField(
           controller: widget.controller,
@@ -61,7 +62,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
               borderSide: const BorderSide(color: Colors.orange, width: 1.5), 
             ),
             suffixIcon: widget.isPassword
@@ -69,7 +70,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
                       color: AppRawColors.textSecondaryDark,
-                      size: 20,
+                      size: Responsive.icon(context, 20),
                     ),
                     onPressed: () {
                       setState(() {

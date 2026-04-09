@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_2/core/helpers/responsive.dart';
 import '../models/onboarding_item.dart';
 
 
@@ -10,7 +11,7 @@ class OnboardingPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+      padding: EdgeInsets.symmetric(horizontal: Responsive.padding(context, 32)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -26,7 +27,7 @@ class OnboardingPageContent extends StatelessWidget {
             flex: 2,
             child: Column(
               children: [
-                const SizedBox(height: 32),
+                SizedBox(height: Responsive.value(context, 32)),
                 Text(
                   item.title,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -34,7 +35,7 @@ class OnboardingPageContent extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: Responsive.value(context, 16)),
                 Text(
                   item.description,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
