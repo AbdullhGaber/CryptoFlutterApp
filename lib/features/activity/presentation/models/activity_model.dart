@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/styles/app_colors.dart';
+import '../../../../core/localization/loc.dart';
 
 enum TradeType {
   buy,
@@ -18,7 +19,7 @@ enum OrderStatus {
   filled,
   cancelled;
 
-  String get label => this == OrderStatus.filled ? 'Filled' : 'Cancelled';
+  String get label => this == OrderStatus.filled ? Loc.activity.filled : Loc.activity.cancelled;
 
   Color getColor(BuildContext context) {
     return this == OrderStatus.filled

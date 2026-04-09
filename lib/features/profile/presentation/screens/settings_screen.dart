@@ -3,6 +3,7 @@ import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_project_2/features/profile/utils/SettingsItemType.dart';
 import 'package:go_router/go_router.dart';
 import '../widgets/setting_row_item.dart';
+import '../../../../core/localization/loc.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -21,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Settings',
+          Loc.profile.settings,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontSize: Responsive.text(context, 22),
           ),

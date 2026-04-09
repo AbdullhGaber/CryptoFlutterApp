@@ -6,6 +6,7 @@ import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routing/app_router.dart';
+import '../../../../core/localization/loc.dart';
 import '../cubit/market_cubit.dart';
 import '../cubit/market_state.dart';
 import '../widgets/market_coin_row.dart';
@@ -48,10 +49,10 @@ class _MarketsScreenState extends State<MarketsScreen> {
                 ),
                 child: Row(
                   children: [
-                    _buildTab(context, 'Convert', false),
-                    _buildTab(context, 'Spot', true),
-                    _buildTab(context, 'Margin', false),
-                    _buildTab(context, 'Fiat', false),
+                    _buildTab(context, Loc.market.convert, false),
+                    _buildTab(context, Loc.market.spot, true),
+                    _buildTab(context, Loc.market.margin, false),
+                    _buildTab(context, Loc.market.fiat, false),
                   ],
                 ),
               ),
@@ -69,7 +70,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
                   } else if (state is MarketError) {
                     return Center(
                       child: Text(
-                        'Failed to load data:\n${state.message}',
+                        '${Loc.market.failedToLoad}\n${state.message}',
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.redAccent),
                       ),
@@ -118,7 +119,7 @@ class _MarketsScreenState extends State<MarketsScreen> {
                         Icon(Icons.star_outline, color: AppRawColors.textSecondaryDark, size: Responsive.icon(context, 24)),
                         SizedBox(width: Responsive.value(context, 8)),
                         Text(
-                          'View Favorites',
+                          Loc.market.viewFavorites,
                           style: TextStyle(
                             color: AppRawColors.textSecondaryDark,
                             fontWeight: FontWeight.w500,

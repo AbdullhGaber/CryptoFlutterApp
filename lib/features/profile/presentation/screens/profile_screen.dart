@@ -5,8 +5,9 @@ import 'package:flutter_project_2/core/helpers/extensions.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/storage/secure_storage_manager.dart';
-import '../widgets/profile_row_item.dart';
 import '../widgets/profile_avatar.dart';
+import '../widgets/profile_row_item.dart';
+import '../../../../core/localization/loc.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -46,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       SizedBox(width: Responsive.value(context, 8)),
                       Text(
-                        'Profile',
+                        Loc.profile.profile,
                         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontSize: Responsive.text(context, 22),
                         ),
@@ -75,29 +76,29 @@ class ProfileScreen extends StatelessWidget {
                         return const Center(child: CircularProgressIndicator(color: AppRawColors.primaryDark));
                       }
 
-                      final email = snapshot.data?['email'] ?? 'No email saved';
-                      final password = snapshot.data?['password'] ?? 'No password saved';
+                      final email = snapshot.data?['email'] ?? Loc.profile.noEmailSaved;
+                      final password = snapshot.data?['password'] ?? Loc.profile.noPasswordSaved;
 
                       return ListView(
                         padding: EdgeInsets.zero,
                         children: [
                           ProfileRowItem(
-                            label: 'Username',
+                            label: Loc.profile.username,
                             value: 'Username1234',
                             onTap: () {},
                           ),
                           ProfileRowItem(
-                            label: 'Email',
+                            label: Loc.profile.email,
                             value: email,
                             onTap: () {},
                           ),
                           ProfileRowItem(
-                            label: 'Mobile Number',
+                            label: Loc.profile.mobileNumber,
                             value: '+1 234 567 8900',
                             onTap: () {},
                           ),
                           ProfileRowItem(
-                            label: 'Password',
+                            label: Loc.profile.password,
                             value: password,
                             onTap: () {},
                           ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/localization/loc.dart';
 import '../cubit/market_cubit.dart';
 import '../cubit/market_state.dart';
 import '../widgets/market_coin_row.dart';
@@ -33,7 +34,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Favorites',
+          Loc.market.favorites,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontSize: Responsive.text(context, 22),
           ),
@@ -49,7 +50,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           } else if (state is MarketError) {
             return Center(
               child: Text(
-                'Failed to load favorites:\n${state.message}',
+                '${Loc.market.failedToLoadFavorites}\n${state.message}',
                 textAlign: TextAlign.center,
                 style: const TextStyle(color: Colors.redAccent),
               ),
@@ -112,7 +113,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             SizedBox(height: Responsive.value(context, 32)),
 
             Text(
-              'No Favorites Yet',
+              Loc.market.noFavoritesYet,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 fontSize: Responsive.text(context, 24),
                 fontWeight: FontWeight.bold,
@@ -121,7 +122,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             SizedBox(height: Responsive.value(context, 12)),
 
             Text(
-              'Keep track of the coins you love by tapping the star icon in the market.',
+              Loc.market.noFavoritesDesc,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: mutedTextColor,
@@ -141,7 +142,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
                 ),
               ),
-              child: const Text('Explore Market'),
+              child: Text(Loc.market.exploreMarket),
             ),
           ],
         ),

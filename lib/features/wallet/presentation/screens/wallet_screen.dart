@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_project_2/core/helpers/extensions.dart';
+import '../../../../core/localization/loc.dart';
 import '../../../market/presentation/models/market_coin_type.dart';
 import '../widgets/wallet_coin_row.dart';
 
@@ -66,7 +67,7 @@ class WalletScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Current Balance',
+                        Loc.wallet.currentBalance,
                         style: TextStyle(
                           color: mutedTextColor,
                           fontSize: Responsive.text(context, 14),
@@ -95,7 +96,7 @@ class WalletScreen extends StatelessWidget {
                       fontSize: Responsive.text(context, 16),
                     ),
                   ),
-                  
+
                   SizedBox(height: Responsive.value(context, 40)),
 
                   Container(
@@ -108,7 +109,7 @@ class WalletScreen extends StatelessWidget {
                       children: [
                         _buildActionTab(
                           context: context,
-                          title: 'Deposit', 
+                          title: Loc.wallet.deposit, 
                           isActive: true, 
                           activeColor: primaryMint, 
                           activeTextColor: AppRawColors.backgroundDark,
@@ -116,7 +117,7 @@ class WalletScreen extends StatelessWidget {
                         ),
                         _buildActionTab(
                           context: context,
-                          title: 'Withdraw', 
+                          title: Loc.wallet.withdraw, 
                           isActive: false, 
                           activeColor: primaryMint, 
                           activeTextColor: AppRawColors.backgroundDark,
@@ -124,7 +125,7 @@ class WalletScreen extends StatelessWidget {
                         ),
                         _buildActionTab(
                           context: context,
-                          title: 'Transfer', 
+                          title: Loc.wallet.transfer, 
                           isActive: false, 
                           activeColor: primaryMint, 
                           activeTextColor: AppRawColors.backgroundDark,
@@ -133,7 +134,7 @@ class WalletScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   SizedBox(height: Responsive.value(context, 32)),
 
                   Column(

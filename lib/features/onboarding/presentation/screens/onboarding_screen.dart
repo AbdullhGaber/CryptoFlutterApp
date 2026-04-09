@@ -4,6 +4,7 @@ import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:go_router/go_router.dart';
 import '../models/onboarding_item.dart';
 import '../widgets/onboarding_page_content.dart';
+import '../../../../core/localization/loc.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -19,18 +20,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<OnboardingItem> _pages = [
     OnboardingItem(
       imagePath: 'assets/images/on_boarding_logo1.png',
-      title: 'Trade anytime anywhere',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      title: Loc.onboarding.title1,
+      description: Loc.onboarding.desc1,
     ),
     OnboardingItem(
       imagePath: 'assets/images/on_boarding_logo2.png',
-      title: 'Transact fast and easy',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      title: Loc.onboarding.title2,
+      description: Loc.onboarding.desc2,
     ),
     OnboardingItem(
       imagePath: 'assets/images/on_boarding_logo3.png',
-      title: 'Save and invest at the same time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      title: Loc.onboarding.title3,
+      description: Loc.onboarding.desc3,
     ),
   ];
 
@@ -125,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             minimumSize: Size(Responsive.value(context, 200), Responsive.value(context, 56)), 
                           ),
                           child: Text(
-                            _currentIndex == _pages.length - 1 ? 'Get Started' : 'Next',
+                            _currentIndex == _pages.length - 1 ? Loc.onboarding.getStarted : Loc.onboarding.next,
                           ),
                         ),
                       ),

@@ -4,6 +4,7 @@ import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_project_2/core/layout/widgets/app_layout_header.dart';
 import '../models/activity_model.dart';
 import '../widgets/activity_row_item.dart';
+import '../../../../core/localization/loc.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -77,11 +78,11 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 8)),
                 child: Column(
                   children: [
-                    _buildQuickActionRow(Icons.monetization_on, 'Deposit'),
+                    _buildQuickActionRow(Icons.monetization_on, Loc.activity.deposit),
                     _buildDivider(),
-                    _buildQuickActionRow(Icons.account_balance_wallet, 'Withdrawals'),
+                    _buildQuickActionRow(Icons.account_balance_wallet, Loc.activity.withdrawals),
                     _buildDivider(),
-                    _buildQuickActionRow(Icons.shopping_cart, 'Buy Order'),
+                    _buildQuickActionRow(Icons.shopping_cart, Loc.activity.buyOrder),
                   ],
                 ),
               ),
@@ -89,7 +90,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
               SizedBox(height: Responsive.value(context, 32)),
 
               Text(
-                'Recent Activity',
+                Loc.activity.recentActivity,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontSize: Responsive.text(context, 20),
                   fontWeight: FontWeight.bold,

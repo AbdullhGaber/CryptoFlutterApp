@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import '../../../../core/theme/styles/app_colors.dart';
 import '../models/activity_model.dart';
+import '../../../../core/localization/loc.dart';
 
 class ActivityRowItem extends StatelessWidget {
   final ActivityModel activity;
@@ -57,11 +58,11 @@ class ActivityRowItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: Responsive.value(context, 8)),
-                  Text('Amount', style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
+                  Text(Loc.activity.amount, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
                   SizedBox(height: Responsive.value(context, 4)),
-                  Text('Price', style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
+                  Text(Loc.activity.price, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
                   SizedBox(height: Responsive.value(context, 4)),
-                  Text('Status', style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
+                  Text(Loc.activity.status, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
                 ],
               ),
             ),

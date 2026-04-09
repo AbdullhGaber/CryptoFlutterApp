@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import '../../../../core/layout/widgets/app_layout_header.dart';
 import '../../../../core/theme/styles/app_colors.dart';
-
+import '../../../../core/localization/loc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,14 +35,14 @@ class HomeScreen extends StatelessWidget {
                   mainAxisSpacing: Responsive.value(context, 24),
                   crossAxisSpacing: Responsive.value(context, 16),
                   children: [
-                    _buildGridItem('assets/svgs/deposit.svg', 'Deposit', context),
-                    _buildGridItem('assets/svgs/referral.svg', 'Referral', context),
-                    _buildGridItem('assets/svgs/grid.svg', 'Grid Trading', context),
-                    _buildGridItem('assets/svgs/margin.svg', 'Margin', context),
-                    _buildGridItem('assets/svgs/launchpad.svg', 'Launchpad', context),
-                    _buildGridItem('assets/svgs/savings.svg', 'Savings', context),
-                    _buildGridItem('assets/svgs/liquid.svg', 'Liquid Swap', context),
-                    _buildGridItem('assets/svgs/more.svg', 'More', context),
+                    _buildGridItem('assets/svgs/deposit.svg', Loc.home.deposit, context),
+                    _buildGridItem('assets/svgs/referral.svg', Loc.home.referral, context),
+                    _buildGridItem('assets/svgs/grid.svg', Loc.home.gridTrading, context),
+                    _buildGridItem('assets/svgs/margin.svg', Loc.home.margin, context),
+                    _buildGridItem('assets/svgs/launchpad.svg', Loc.home.launchpad, context),
+                    _buildGridItem('assets/svgs/savings.svg', Loc.home.savings, context),
+                    _buildGridItem('assets/svgs/liquid.svg', Loc.home.liquidSwap, context),
+                    _buildGridItem('assets/svgs/more.svg', Loc.home.more, context),
                   ],
                 ),
               ],
@@ -60,23 +60,23 @@ class HomeScreen extends StatelessWidget {
               children: [
                 _buildActionCard(
                   context: context,
-                  title: 'P2P Trading',
-                  subtitle: 'Bank Transfer, Paypal Revolut...',
+                  title: Loc.home.p2pTrading,
+                  subtitle: Loc.home.p2pTradingDesc,
                   iconPath: 'assets/svgs/rocket.svg',
                 ),
                 SizedBox(height: Responsive.value(context, 16)),
 
                 _buildActionCard(
                   context: context,
-                  title: 'Credit/Debit Card',
-                  subtitle: 'Visa, Mastercard',
+                  title: Loc.home.creditDebitCard,
+                  subtitle: Loc.home.creditDebitCardDesc,
                   iconPath: 'assets/svgs/credit.svg',
                 ),
 
                 SizedBox(height: Responsive.value(context, 32)),
 
                 Text(
-                  'Recent Coin',
+                  Loc.home.recentCoin,
                   style: TextStyle(
                     fontSize: Responsive.text(context, 18),
                     fontWeight: FontWeight.bold,
@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: Responsive.value(context, 140),
                   child: Center(
-                    child: Text('Horizontal Coin Cards go here...', style: TextStyle(color: Colors.grey)),
+                    child: Text(Loc.home.coinCardsPlaceholder, style: const TextStyle(color: Colors.grey)),
                   ),
                 ),
               ],
@@ -190,7 +190,7 @@ class HomeScreen extends StatelessWidget {
 
           Container(
             padding: EdgeInsets.all(Responsive.padding(context, 8)),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppRawColors.backgroundLight,
               shape: BoxShape.circle,
             ),

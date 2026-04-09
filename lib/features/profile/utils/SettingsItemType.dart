@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/localization/loc.dart';
 
 enum SettingsItemType{
   LANGUAGE,
@@ -25,28 +26,28 @@ enum SettingsItemType{
   String getTitle(){
     switch(this){
       case LANGUAGE :
-        return 'Language';
+        return Loc.profile.language;
       case CURRENCY:
-        return 'currency';
+        return Loc.profile.currency;
       case APPEARNCE:
-        return 'appearance';
+        return Loc.profile.appearance;
       case PREFERENCE:
-        return 'preference';
+        return Loc.profile.preference;
       case ABOUT_US:
-        return 'about us';
+        return Loc.profile.aboutUs;
     }
   }
 
   String getTrailingText(){
       switch(this){
         case LANGUAGE :
-          return 'English';
+          return Loc.profile.english;
         case CURRENCY:
-          return 'USD';
+          return Loc.profile.usd;
         case APPEARNCE:
-          return 'Appearance';
+          return Loc.profile.appearance;
         case PREFERENCE:
-          return 'Customize';
+          return Loc.profile.customize;
         case ABOUT_US:
           return 'v1.2.3';
       }

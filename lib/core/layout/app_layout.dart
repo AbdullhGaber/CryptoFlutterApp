@@ -5,6 +5,8 @@ import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/market/presentation/screens/markets_screen.dart';
 import '../../features/activity/presentation/screens/activity_screen.dart';
 import '../../features/wallet/presentation/screens/wallet_screen.dart';
+import '../localization/loc.dart';
+import '../helpers/responsive.dart';
 
 class AppLayout extends StatefulWidget {
   const AppLayout({super.key});
@@ -17,7 +19,7 @@ class _AppLayoutState extends State<AppLayout> {
   late final List<Widget> _screens = [
     const HomeScreen(),
     const MarketsScreen(),
-    const Center(child: Text('Trades Screen')),
+    Center(child: Text(Loc.app.tradesScreen)),
     const ActivityScreen(),
     const WalletScreen(),
   ];
@@ -58,11 +60,11 @@ class _AppLayoutState extends State<AppLayout> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildNavItem(0, 'Home', 'assets/svgs/home.svg', activeColor, inactiveColor),
-                  _buildNavItem(1, 'Markets', 'assets/svgs/market.svg', activeColor, inactiveColor),
-                  _buildNavItem(2, 'Trades', 'assets/svgs/trades.svg', activeColor, inactiveColor),
-                  _buildNavItem(3, 'Activity', 'assets/svgs/activity.svg', activeColor, inactiveColor),
-                  _buildNavItem(4, 'Wallets', 'assets/svgs/wallet.svg', activeColor, inactiveColor),
+                  Expanded(child: _buildNavItem(0, Loc.home.navHome, 'assets/svgs/home.svg', activeColor, inactiveColor)),
+                  Expanded(child: _buildNavItem(1, Loc.home.navMarkets, 'assets/svgs/market.svg', activeColor, inactiveColor)),
+                  Expanded(child: _buildNavItem(2, Loc.home.navTrades, 'assets/svgs/trades.svg', activeColor, inactiveColor)),
+                  Expanded(child: _buildNavItem(3, Loc.home.navActivity, 'assets/svgs/activity.svg', activeColor, inactiveColor)),
+                  Expanded(child: _buildNavItem(4, Loc.home.navWallets, 'assets/svgs/wallet.svg', activeColor, inactiveColor)),
                 ],
               ),
             ),
@@ -95,9 +97,11 @@ class _AppLayoutState extends State<AppLayout> {
             label,
             style: TextStyle(
               color: color,
-              fontSize: 10,
+              fontSize: Responsive.text(context, 10),
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

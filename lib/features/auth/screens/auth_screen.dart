@@ -7,6 +7,7 @@ import '../../../core/routing/app_router.dart';
 import '../../../core/storage/secure_storage_manager.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../widgets/social_button.dart';
+import '../../../core/localization/loc.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -50,33 +51,33 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 child: Row(
                   children: [
-                    _buildTabButton(title: 'Sign in', isSelected: _isSignIn, onTap: () => setState(() => _isSignIn = true)),
-                    _buildTabButton(title: 'Sign up', isSelected: !_isSignIn, onTap: () => setState(() => _isSignIn = false)),
+                    _buildTabButton(title: Loc.auth.signInHeader, isSelected: _isSignIn, onTap: () => setState(() => _isSignIn = true)),
+                    _buildTabButton(title: Loc.auth.signUpHeader, isSelected: !_isSignIn, onTap: () => setState(() => _isSignIn = false)),
                   ],
                 ),
               ),
               SizedBox(height: Responsive.value(context, 40)),
 
               Text(
-                _isSignIn ? 'Sign in' : 'Sign up',
+                _isSignIn ? Loc.auth.signInHeader : Loc.auth.signUpHeader,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               SizedBox(height: Responsive.value(context, 32)),
               CustomTextField(
                 controller: _emailController,
-                label: _isEmailMode ? 'Email' : 'Mobile Number',
-                hintText: _isEmailMode ? 'Enter your email' : 'Enter your mobile',
+                label: _isEmailMode ? Loc.auth.emailLabel : Loc.auth.mobileNumber,
+                hintText: _isEmailMode ? Loc.auth.enterEmail : Loc.auth.enterMobile,
                 actionText: _isSignIn
-                    ? (_isEmailMode ? 'Sign in with mobile' : 'Sign in with email')
-                    : (_isEmailMode ? 'Register with mobile' : 'Register with email'),
+                    ? (_isEmailMode ? Loc.auth.signInWithMobile : Loc.auth.signInWithEmail)
+                    : (_isEmailMode ? Loc.auth.registerWithMobile : Loc.auth.registerWithEmail),
                 onActionTap: () => setState(() => _isEmailMode = !_isEmailMode),
               ),
               SizedBox(height: Responsive.value(context, 24)),
 
               CustomTextField(
                 controller: _passwordController,
-                label: 'Password',
-                hintText: 'Enter your password',
+                label: Loc.auth.passwordLabel,
+                hintText: Loc.auth.enterPassword,
                 isPassword: true,
               ),
               SizedBox(height: Responsive.value(context, 16)),
@@ -85,7 +86,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 GestureDetector(
                   onTap: () {},
                   child: Text(
-                    'Forgot password?',
+                    Loc.auth.forgotPassword,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontSize: Responsive.text(context, 14),
@@ -109,13 +110,13 @@ class _AuthScreenState extends State<AuthScreen> {
                     // Handle Sign In logic later
                   }
                 },
-                child: Text(_isSignIn ? 'Sign in' : 'Sign up'),
+                child: Text(_isSignIn ? Loc.auth.signInHeader : Loc.auth.signUpHeader),
               ),
               SizedBox(height: Responsive.value(context, 32)),
 
               Center(
                 child: Text(
-                  'Or login with',
+                  Loc.auth.orLoginWith,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
@@ -123,13 +124,13 @@ class _AuthScreenState extends State<AuthScreen> {
               Row(
                 children: [
                   SocialButton(
-                    text: 'Facebook',
+                    text: Loc.auth.facebook,
                     iconPath: 'assets/images/facebook_icon.png',
                     onPressed: () {},
                   ),
                   SizedBox(width: Responsive.value(context, 16)),
                   SocialButton(
-                    text: 'Google',
+                    text: Loc.auth.google,
                     iconPath: 'assets/images/google_icon.png',
                     onPressed: () {},
                   ),
@@ -148,7 +149,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                       SizedBox(height: Responsive.value(context, 8)),
                       Text(
-                        'Use fingerprint instead?',
+                        Loc.auth.useFingerprint,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
