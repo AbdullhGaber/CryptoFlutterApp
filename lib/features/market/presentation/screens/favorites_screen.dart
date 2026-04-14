@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
@@ -56,7 +57,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ),
             );
           } else if (state is MarketLoaded) {
-            final favoriteCoins = state.coins.where((coin) => state.favoriteIds.contains(coin.id)).toList();
+            final favoriteCoins = state.coins
+                .where((coin) => state.favoriteIds.contains(coin.id))
+                .toList();
 
             if (favoriteCoins.isEmpty) {
               return _buildEmptyState(context);
@@ -64,8 +67,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
             return ListView.builder(
               padding: EdgeInsets.symmetric(
-                horizontal: Responsive.padding(context, 24),
-                vertical: Responsive.padding(context, 16),
+                horizontal: AppVal.padding24(context),
+                vertical: AppVal.padding16(context),
               ),
               itemCount: favoriteCoins.length,
               itemBuilder: (context, index) {
@@ -94,39 +97,41 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Responsive.padding(context, 40)),
+        padding: EdgeInsets.symmetric(
+          horizontal: Responsive.padding(context, 40),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(Responsive.padding(context, 24)),
+              padding: EdgeInsets.all(AppVal.padding24(context)),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: primaryMint.withValues(alpha: 0.1),
               ),
               child: Icon(
                 Icons.star_outline,
-                size: Responsive.icon(context, 64),
+                size: AppVal.icon64(context),
                 color: primaryMint,
               ),
             ),
-            SizedBox(height: Responsive.value(context, 32)),
+            AppVal.verticalSpace32(context),
 
             Text(
               Loc.market.noFavoritesYet,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontSize: Responsive.text(context, 24),
+                fontSize: Responsive.text(context, AppVal.val24),
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: Responsive.value(context, 12)),
+            AppVal.verticalSpace12(context),
 
             Text(
               Loc.market.noFavoritesDesc,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: mutedTextColor,
-                fontSize: Responsive.text(context, 16),
+                fontSize: Responsive.text(context, AppVal.val16),
                 height: 1.5,
               ),
             ),
@@ -137,9 +142,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 backgroundColor: AppRawColors.surfaceVariantDark,
                 foregroundColor: Colors.white,
                 elevation: 0,
-                minimumSize: Size(Responsive.value(context, 200), Responsive.value(context, 56)),
+                minimumSize: Size(
+                  Responsive.value(context, 200),
+                  Responsive.value(context, 56),
+                ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
+                  borderRadius: AppVal.borderRadius16(context),
                 ),
               ),
               child: Text(Loc.market.exploreMarket),

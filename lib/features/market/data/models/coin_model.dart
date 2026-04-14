@@ -13,8 +13,11 @@ class CoinModel extends CoinEntity {
 
   factory CoinModel.fromJson(Map<String, dynamic> json) {
     List<double> parsedSparkline = [];
-    if (json['sparkline_in_7d'] != null && json['sparkline_in_7d']['price'] != null) {
-      parsedSparkline = List<double>.from(json['sparkline_in_7d']['price'].map((x) => x.toDouble()));
+    if (json['sparkline_in_7d'] != null &&
+        json['sparkline_in_7d']['price'] != null) {
+      parsedSparkline = List<double>.from(
+        json['sparkline_in_7d']['price'].map((x) => x.toDouble()),
+      );
     }
 
     return CoinModel(
@@ -23,7 +26,8 @@ class CoinModel extends CoinEntity {
       name: json['name'] ?? '',
       image: json['image'] ?? '',
       currentPrice: (json['current_price'] ?? 0).toDouble(),
-      priceChangePercentage24h: (json['price_change_percentage_24h'] ?? 0).toDouble(),
+      priceChangePercentage24h: (json['price_change_percentage_24h'] ?? 0)
+          .toDouble(),
       sparkline: parsedSparkline,
     );
   }

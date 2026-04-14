@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -19,17 +21,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingItem> _pages = [
     OnboardingItem(
-      imagePath: 'assets/images/on_boarding_logo1.png',
+      imagePath: AppAssets.imagesOnBoardingLogo1,
       title: Loc.onboarding.title1,
       description: Loc.onboarding.desc1,
     ),
     OnboardingItem(
-      imagePath: 'assets/images/on_boarding_logo2.png',
+      imagePath: AppAssets.imagesOnBoardingLogo2,
       title: Loc.onboarding.title2,
       description: Loc.onboarding.desc2,
     ),
     OnboardingItem(
-      imagePath: 'assets/images/on_boarding_logo3.png',
+      imagePath: AppAssets.imagesOnBoardingLogo3,
       title: Loc.onboarding.title3,
       description: Loc.onboarding.desc3,
     ),
@@ -58,10 +60,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            'assets/images/onboarding_bg.png',
-            fit: BoxFit.cover,
-          ),
+          Image.asset(AppAssets.imagesOnboardingBg, fit: BoxFit.cover),
 
           SafeArea(
             child: Column(
@@ -83,9 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                    Responsive.padding(context, 24),
+                    AppVal.padding24(context),
                     0,
-                    Responsive.padding(context, 24),
+                    AppVal.padding24(context),
                     Responsive.padding(context, 48),
                   ),
                   child: Column(
@@ -96,9 +95,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           _pages.length,
                           (index) => AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            margin: EdgeInsets.symmetric(horizontal: Responsive.value(context, 4)),
-                            height: Responsive.value(context, 8),
-                            width: Responsive.value(context, 8),
+                            margin: EdgeInsets.symmetric(
+                              horizontal: Responsive.value(
+                                context,
+                                AppVal.val4,
+                              ),
+                            ),
+                            height: Responsive.value(context, AppVal.val8),
+                            width: Responsive.value(context, AppVal.val8),
                             decoration: BoxDecoration(
                               color: _currentIndex == index
                                   ? Theme.of(context).primaryColor
@@ -108,25 +112,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                       ),
-                      
-                      SizedBox(height: Responsive.value(context, 32)),
+
+                      AppVal.verticalSpace32(context),
                       Container(
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Theme.of(context).primaryColor.withValues(alpha: 0.2),
-                              blurRadius: Responsive.value(context, 20),
-                              offset: Offset(0, Responsive.value(context, 8)),
+                              color: Theme.of(
+                                context,
+                              ).primaryColor.withValues(alpha: 0.2),
+                              blurRadius: Responsive.value(
+                                context,
+                                AppVal.val20,
+                              ),
+                              offset: Offset(
+                                0,
+                                Responsive.value(context, AppVal.val8),
+                              ),
                             ),
                           ],
                         ),
                         child: ElevatedButton(
                           onPressed: _onNextPressed,
                           style: ElevatedButton.styleFrom(
-                            minimumSize: Size(Responsive.value(context, 200), Responsive.value(context, 56)), 
+                            minimumSize: Size(
+                              Responsive.value(context, 200),
+                              Responsive.value(context, 56),
+                            ),
                           ),
                           child: Text(
-                            _currentIndex == _pages.length - 1 ? Loc.onboarding.getStarted : Loc.onboarding.next,
+                            _currentIndex == _pages.length - 1
+                                ? Loc.onboarding.getStarted
+                                : Loc.onboarding.next,
                           ),
                         ),
                       ),

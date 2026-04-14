@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import 'package:flutter_project_2/features/profile/utils/SettingsItemType.dart';
@@ -32,19 +33,17 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(
-          horizontal: Responsive.padding(context, 24),
-          vertical: Responsive.padding(context, 16),
+          horizontal: AppVal.padding24(context),
+          vertical: AppVal.padding16(context),
         ),
-        children: SettingsItemType.values.map(
-            (e) {
-              return SettingRowItem(
-                icon: e.getIcon(),
-                title: e.getTitle(),
-                trailingText: e.getTrailingText(),
-                onTap: e.getOnTap,
-              );
-            }
-        ).toList(),
+        children: SettingsItemType.values.map((e) {
+          return SettingRowItem(
+            icon: e.getIcon(),
+            title: e.getTitle(),
+            trailingText: e.getTrailingText(),
+            onTap: e.getOnTap,
+          );
+        }).toList(),
       ),
     );
   }

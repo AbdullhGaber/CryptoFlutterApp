@@ -11,7 +11,10 @@ class MarketCubit extends Cubit<MarketState> {
   Future<void> fetchTopCoins({String currency = 'usd', int limit = 10}) async {
     emit(MarketLoading());
 
-    final result = await repository.getTopCoins(currency: currency, limit: limit);
+    final result = await repository.getTopCoins(
+      currency: currency,
+      limit: limit,
+    );
 
     switch (result) {
       case ApiSuccess(:final data):
@@ -30,7 +33,9 @@ class MarketCubit extends Cubit<MarketState> {
       await repository.toggleFavorite(coin, isCurrentlyFavorited);
 
       final updatedFavorites = await repository.getFavoriteIds();
-      emit(MarketLoaded(coins: currentState.coins, favoriteIds: updatedFavorites));
+      emit(
+        MarketLoaded(coins: currentState.coins, favoriteIds: updatedFavorites),
+      );
     }
   }
 }

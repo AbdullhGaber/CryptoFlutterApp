@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -36,23 +38,31 @@ class _AuthScreenState extends State<AuthScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(
-            horizontal: Responsive.padding(context, 24),
-            vertical: Responsive.padding(context, 16),
+            horizontal: AppVal.padding24(context),
+            vertical: AppVal.padding16(context),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: Responsive.value(context, 24)),
+              AppVal.verticalSpace24(context),
               Container(
                 height: Responsive.value(context, 48),
                 decoration: BoxDecoration(
                   color: AppRawColors.surfaceDark,
-                  borderRadius: BorderRadius.circular(Responsive.value(context, 24)),
+                  borderRadius: AppVal.borderRadius24(context),
                 ),
                 child: Row(
                   children: [
-                    _buildTabButton(title: Loc.auth.signInHeader, isSelected: _isSignIn, onTap: () => setState(() => _isSignIn = true)),
-                    _buildTabButton(title: Loc.auth.signUpHeader, isSelected: !_isSignIn, onTap: () => setState(() => _isSignIn = false)),
+                    _buildTabButton(
+                      title: Loc.auth.signInHeader,
+                      isSelected: _isSignIn,
+                      onTap: () => setState(() => _isSignIn = true),
+                    ),
+                    _buildTabButton(
+                      title: Loc.auth.signUpHeader,
+                      isSelected: !_isSignIn,
+                      onTap: () => setState(() => _isSignIn = false),
+                    ),
                   ],
                 ),
               ),
@@ -62,17 +72,25 @@ class _AuthScreenState extends State<AuthScreen> {
                 _isSignIn ? Loc.auth.signInHeader : Loc.auth.signUpHeader,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              SizedBox(height: Responsive.value(context, 32)),
+              AppVal.verticalSpace32(context),
               CustomTextField(
                 controller: _emailController,
-                label: _isEmailMode ? Loc.auth.emailLabel : Loc.auth.mobileNumber,
-                hintText: _isEmailMode ? Loc.auth.enterEmail : Loc.auth.enterMobile,
+                label: _isEmailMode
+                    ? Loc.auth.emailLabel
+                    : Loc.auth.mobileNumber,
+                hintText: _isEmailMode
+                    ? Loc.auth.enterEmail
+                    : Loc.auth.enterMobile,
                 actionText: _isSignIn
-                    ? (_isEmailMode ? Loc.auth.signInWithMobile : Loc.auth.signInWithEmail)
-                    : (_isEmailMode ? Loc.auth.registerWithMobile : Loc.auth.registerWithEmail),
+                    ? (_isEmailMode
+                          ? Loc.auth.signInWithMobile
+                          : Loc.auth.signInWithEmail)
+                    : (_isEmailMode
+                          ? Loc.auth.registerWithMobile
+                          : Loc.auth.registerWithEmail),
                 onActionTap: () => setState(() => _isEmailMode = !_isEmailMode),
               ),
-              SizedBox(height: Responsive.value(context, 24)),
+              AppVal.verticalSpace24(context),
 
               CustomTextField(
                 controller: _passwordController,
@@ -80,7 +98,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 hintText: Loc.auth.enterPassword,
                 isPassword: true,
               ),
-              SizedBox(height: Responsive.value(context, 16)),
+              AppVal.verticalSpace16(context),
 
               if (_isSignIn)
                 GestureDetector(
@@ -89,12 +107,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     Loc.auth.forgotPassword,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
-                      fontSize: Responsive.text(context, 14),
+                      fontSize: Responsive.text(context, AppVal.val14),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
-              SizedBox(height: Responsive.value(context, 32)),
+              AppVal.verticalSpace32(context),
 
               ElevatedButton(
                 onPressed: () async {
@@ -110,9 +128,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     // Handle Sign In logic later
                   }
                 },
-                child: Text(_isSignIn ? Loc.auth.signInHeader : Loc.auth.signUpHeader),
+                child: Text(
+                  _isSignIn ? Loc.auth.signInHeader : Loc.auth.signUpHeader,
+                ),
               ),
-              SizedBox(height: Responsive.value(context, 32)),
+              AppVal.verticalSpace32(context),
 
               Center(
                 child: Text(
@@ -120,18 +140,18 @@ class _AuthScreenState extends State<AuthScreen> {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
-              SizedBox(height: Responsive.value(context, 16)),
+              AppVal.verticalSpace16(context),
               Row(
                 children: [
                   SocialButton(
                     text: Loc.auth.facebook,
-                    iconPath: 'assets/images/facebook_icon.png',
+                    iconPath: AppAssets.imagesFacebookIcon,
                     onPressed: () {},
                   ),
-                  SizedBox(width: Responsive.value(context, 16)),
+                  AppVal.horizontalSpace16(context),
                   SocialButton(
                     text: Loc.auth.google,
-                    iconPath: 'assets/images/google_icon.png',
+                    iconPath: AppAssets.imagesGoogleIcon,
                     onPressed: () {},
                   ),
                 ],
@@ -144,10 +164,13 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       IconButton(
                         iconSize: Responsive.icon(context, 48),
-                        icon: Icon(Icons.fingerprint, color: AppRawColors.primaryDark),
+                        icon: Icon(
+                          Icons.fingerprint,
+                          color: AppRawColors.primaryDark,
+                        ),
                         onPressed: () {}, // Handle biometric auth
                       ),
-                      SizedBox(height: Responsive.value(context, 8)),
+                      AppVal.verticalSpace8(context),
                       Text(
                         Loc.auth.useFingerprint,
                         style: Theme.of(context).textTheme.bodyMedium,
@@ -162,17 +185,29 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  Widget _buildTabButton({required String title, required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildTabButton({
+    required String title,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: isSelected ? AppRawColors.backgroundDark : Colors.transparent,
-            borderRadius: BorderRadius.circular(Responsive.value(context, 24)),
+            color: isSelected
+                ? AppRawColors.backgroundDark
+                : Colors.transparent,
+            borderRadius: AppVal.borderRadius24(context),
             boxShadow: isSelected
-                ? [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: Responsive.value(context, 4), offset: Offset(0, Responsive.value(context, 2)))]
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.1),
+                      blurRadius: Responsive.value(context, AppVal.val4),
+                      offset: Offset(0, Responsive.value(context, 2)),
+                    ),
+                  ]
                 : [],
           ),
           child: Text(
@@ -180,7 +215,7 @@ class _AuthScreenState extends State<AuthScreen> {
             style: TextStyle(
               color: isSelected ? Colors.white : AppRawColors.textSecondaryDark,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              fontSize: Responsive.text(context, 14),
+              fontSize: Responsive.text(context, AppVal.val14),
             ),
           ),
         ),

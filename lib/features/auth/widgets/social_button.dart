@@ -1,6 +1,7 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_project_2/core/helpers/responsive.dart';
+
 
 class SocialButton extends StatelessWidget {
   final String text;
@@ -21,8 +22,8 @@ class SocialButton extends StatelessWidget {
         onPressed: onPressed,
         icon: SvgPicture.asset(
           iconPath,
-          height: Responsive.icon(context, 24),
-          width: Responsive.icon(context, 24),
+          height: AppVal.icon24(context),
+          width: AppVal.icon24(context),
         ),
         label: Text(text),
       ),

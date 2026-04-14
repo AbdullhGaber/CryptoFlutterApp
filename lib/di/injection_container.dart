@@ -48,29 +48,18 @@ Future<void> init() async {
   sl.registerLazySingleton(() => databaseHelper);
 
   sl.registerLazySingleton<MarketLocalDataSource>(
-        () => MarketLocalDataSourceImpl(dbHelper: sl()),
+    () => MarketLocalDataSourceImpl(dbHelper: sl()),
   );
 
   sl.registerLazySingleton<MarketRemoteDataSource>(
-        () => MarketRemoteDataSourceImpl(marketService: sl()),
+    () => MarketRemoteDataSourceImpl(marketService: sl()),
   );
 
   sl.registerLazySingleton<MarketRepository>(
-        () => MarketRepositoryImpl(
-      remoteDataSource: sl(),
-      localDataSource: sl(),
-    ),
+    () => MarketRepositoryImpl(remoteDataSource: sl(), localDataSource: sl()),
   );
 
-  sl.registerFactory(
-        () => MarketCubit(
-      repository: sl(),
-    ),
-  );
+  sl.registerFactory(() => MarketCubit(repository: sl()));
 
-  sl.registerFactory(
-        () => HomeCubit(
-      marketRepository: sl(),
-    ),
-  );
+  sl.registerFactory(() => HomeCubit(marketRepository: sl()));
 }

@@ -1,7 +1,7 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project_2/core/helpers/responsive.dart';
-import '../models/onboarding_item.dart';
 
+import '../models/onboarding_item.dart';
 
 class OnboardingPageContent extends StatelessWidget {
   final OnboardingItem item;
@@ -11,23 +11,20 @@ class OnboardingPageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Responsive.padding(context, 32)),
+      padding: EdgeInsets.symmetric(horizontal: AppVal.padding32(context)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             flex: 3,
-            child: Image.asset(
-              item.imagePath,
-              fit: BoxFit.contain,
-            ),
+            child: Image.asset(item.imagePath, fit: BoxFit.contain),
           ),
 
           Expanded(
             flex: 2,
             child: Column(
               children: [
-                SizedBox(height: Responsive.value(context, 32)),
+                AppVal.verticalSpace32(context),
                 Text(
                   item.title,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -35,12 +32,12 @@ class OnboardingPageContent extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: Responsive.value(context, 16)),
+                AppVal.verticalSpace16(context),
                 Text(
                   item.description,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    height: 1.5,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(height: 1.5),
                   textAlign: TextAlign.center,
                 ),
               ],

@@ -7,10 +7,16 @@ class HomeCubit extends Cubit<HomeState> {
   final MarketRepository marketRepository;
 
   HomeCubit({required this.marketRepository}) : super(HomeInitial());
-  Future<void> fetchRecentCoins({String currency = 'usd', int limit = 10}) async {
+  Future<void> fetchRecentCoins({
+    String currency = 'usd',
+    int limit = 10,
+  }) async {
     emit(HomeLoading());
     try {
-      final result = await marketRepository.getTopCoins(currency: currency, limit: limit);
+      final result = await marketRepository.getTopCoins(
+        currency: currency,
+        limit: limit,
+      );
       switch (result) {
         case ApiSuccess(:final data):
           emit(HomeLoaded(recentCoins: data));

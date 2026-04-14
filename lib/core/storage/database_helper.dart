@@ -32,16 +32,12 @@ class DatabaseHelper {
 
   Future<void> addFavorite(CoinEntity coin) async {
     final db = await database;
-    await db.insert(
-      tableName,
-      {
-        'id': coin.id,
-        'symbol': coin.symbol,
-        'name': coin.name,
-        'image': coin.image,
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await db.insert(tableName, {
+      'id': coin.id,
+      'symbol': coin.symbol,
+      'name': coin.name,
+      'image': coin.image,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> removeFavorite(String id) async {
@@ -51,7 +47,10 @@ class DatabaseHelper {
 
   Future<List<String>> getFavoriteIds() async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(tableName, columns: ['id']);
+    final List<Map<String, dynamic>> maps = await db.query(
+      tableName,
+      columns: ['id'],
+    );
     return maps.map((map) => map['id'] as String).toList();
   }
 }

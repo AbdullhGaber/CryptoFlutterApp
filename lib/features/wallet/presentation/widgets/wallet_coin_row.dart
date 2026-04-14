@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -8,11 +9,7 @@ class WalletCoinRow extends StatelessWidget {
   final MarketCoinType coin;
   final VoidCallback onTap;
 
-  const WalletCoinRow({
-    super.key,
-    required this.coin,
-    required this.onTap,
-  });
+  const WalletCoinRow({super.key, required this.coin, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,7 @@ class WalletCoinRow extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 16)),
+        padding: EdgeInsets.symmetric(vertical: AppVal.padding16(context)),
         child: Row(
           children: [
             SvgPicture.asset(
@@ -29,7 +26,7 @@ class WalletCoinRow extends StatelessWidget {
               height: Responsive.value(context, 40),
               width: Responsive.value(context, 40),
             ),
-            SizedBox(width: Responsive.value(context, 16)),
+            AppVal.horizontalSpace16(context),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,12 +37,12 @@ class WalletCoinRow extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: Responsive.value(context, 4)),
+                  AppVal.verticalSpace4(context),
                   Text(
                     coin.getSymbol(),
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: mutedTextColor,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: mutedTextColor),
                   ),
                 ],
               ),
@@ -55,16 +52,16 @@ class WalletCoinRow extends StatelessWidget {
               children: [
                 Text(
                   coin.getCryptoBalance(),
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: Responsive.value(context, 4)),
+                AppVal.verticalSpace4(context),
                 Text(
                   coin.getFiatBalance(),
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: mutedTextColor,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: mutedTextColor),
                 ),
               ],
             ),

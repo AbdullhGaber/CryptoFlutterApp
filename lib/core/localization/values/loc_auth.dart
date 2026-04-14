@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+
 class AuthLoc {
   String get signInHeader => tr("data.auth.sign_in_header");
   String get signUpHeader => tr("data.auth.sign_up_header");
@@ -18,8 +19,10 @@ class AuthLoc {
   String get enterEmail => tr("data.auth.enter_email");
   String get enterPassword => tr("data.auth.enter_password");
   String get pleaseEnterPassword => tr("data.auth.please_enter_password");
-  String get registerWithMobileTitle => tr("data.auth.register_with_mobile_title");
-  String get registerWithMobileDesc => tr("data.auth.register_with_mobile_desc");
+  String get registerWithMobileTitle =>
+      tr("data.auth.register_with_mobile_title");
+  String get registerWithMobileDesc =>
+      tr("data.auth.register_with_mobile_desc");
   String get sendOtp => tr("data.auth.send_otp");
   String get verification => tr("data.auth.verification");
   String get enterYourCode => tr("data.auth.enter_your_code");

@@ -55,8 +55,14 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppRawColors.surfaceDark,
-        hintStyle: const TextStyle(color: AppRawColors.textSecondaryDark, fontSize: 14),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+        hintStyle: const TextStyle(
+          color: AppRawColors.textSecondaryDark,
+          fontSize: 14,
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 18,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
@@ -67,15 +73,29 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppRawColors.primaryDark, width: 1),
+          borderSide: const BorderSide(
+            color: AppRawColors.primaryDark,
+            width: 1,
+          ),
         ),
       ),
 
       textTheme: const TextTheme(
-        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryDark),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryDark),
+        displayLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: AppRawColors.textPrimaryDark,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: AppRawColors.textPrimaryDark,
+        ),
         bodyLarge: TextStyle(fontSize: 16, color: AppRawColors.textPrimaryDark),
-        bodyMedium: TextStyle(fontSize: 14, color: AppRawColors.textSecondaryDark),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: AppRawColors.textSecondaryDark,
+        ),
       ),
     );
   }
@@ -120,8 +140,14 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppRawColors.surfaceVariantLight,
-        hintStyle: const TextStyle(color: AppRawColors.textSecondaryLight, fontSize: 14),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+        hintStyle: const TextStyle(
+          color: AppRawColors.textSecondaryLight,
+          fontSize: 14,
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 18,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
@@ -132,15 +158,32 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppRawColors.primaryLight, width: 1),
+          borderSide: const BorderSide(
+            color: AppRawColors.primaryLight,
+            width: 1,
+          ),
         ),
       ),
 
       textTheme: const TextTheme(
-        displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryLight),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppRawColors.textPrimaryLight),
-        bodyLarge: TextStyle(fontSize: 16, color: AppRawColors.textPrimaryLight),
-        bodyMedium: TextStyle(fontSize: 14, color: AppRawColors.textSecondaryLight),
+        displayLarge: TextStyle(
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: AppRawColors.textPrimaryLight,
+        ),
+        headlineMedium: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: AppRawColors.textPrimaryLight,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          color: AppRawColors.textPrimaryLight,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          color: AppRawColors.textSecondaryLight,
+        ),
       ),
     );
   }

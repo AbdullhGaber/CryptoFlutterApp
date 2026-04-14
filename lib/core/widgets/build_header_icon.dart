@@ -11,7 +11,10 @@ Widget buildHeaderIcon(String path, {BuildContext? ctx}) {
         scale: 1.8,
         child: SvgPicture.asset(
           path,
-          colorFilter: const ColorFilter.mode(AppRawColors.primaryDark, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(
+            AppRawColors.primaryDark,
+            BlendMode.srcIn,
+          ),
           height: Responsive.icon(c, 24),
           width: Responsive.icon(c, 24),
         ),

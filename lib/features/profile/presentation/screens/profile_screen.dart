@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -24,17 +26,15 @@ class ProfileScreen extends StatelessWidget {
             left: 0,
             right: 0,
             height: context.screenHeight * 0.26,
-            child: Container(
-              color: headerColor,
-            ),
+            child: Container(color: headerColor),
           ),
           SafeArea(
             child: Column(
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: Responsive.padding(context, 8),
-                    vertical: Responsive.padding(context, 8),
+                    horizontal: AppVal.padding8(context),
+                    vertical: AppVal.padding8(context),
                   ),
                   child: Row(
                     children: [
@@ -45,39 +45,45 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         onPressed: () => context.pop(),
                       ),
-                      SizedBox(width: Responsive.value(context, 8)),
+                      AppVal.horizontalSpace8(context),
                       Text(
                         Loc.profile.profile,
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          fontSize: Responsive.text(context, 22),
-                        ),
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(fontSize: Responsive.text(context, 22)),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: Responsive.value(context, 16)),
-                const ProfileAvatar(
-                  imagePath: 'assets/images/user_avatar.png',
-                ),
-                SizedBox(height: Responsive.value(context, 16)),
+                AppVal.verticalSpace16(context),
+                const ProfileAvatar(imagePath: AppAssets.imagesUserAvatar),
+                AppVal.verticalSpace16(context),
                 Text(
                   'User1234',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontSize: Responsive.text(context, 20),
+                    fontSize: Responsive.text(context, AppVal.val20),
                   ),
                 ),
-                SizedBox(height: Responsive.value(context, 32)),
+                AppVal.verticalSpace32(context),
 
                 Expanded(
                   child: FutureBuilder<Map<String, String?>>(
-                    future: context.read<SecureStorageManager>().getCredentials(),
+                    future: context
+                        .read<SecureStorageManager>()
+                        .getCredentials(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator(color: AppRawColors.primaryDark));
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: AppRawColors.primaryDark,
+                          ),
+                        );
                       }
 
-                      final email = snapshot.data?['email'] ?? Loc.profile.noEmailSaved;
-                      final password = snapshot.data?['password'] ?? Loc.profile.noPasswordSaved;
+                      final email =
+                          snapshot.data?['email'] ?? Loc.profile.noEmailSaved;
+                      final password =
+                          snapshot.data?['password'] ??
+                          Loc.profile.noPasswordSaved;
 
                       return ListView(
                         padding: EdgeInsets.zero,

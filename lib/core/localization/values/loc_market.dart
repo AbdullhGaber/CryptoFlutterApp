@@ -9,7 +9,8 @@ class MarketLoc {
   String get viewFavorites => tr("data.market.view_favorites");
   String get favorites => tr("data.market.favorites");
   String get failedToLoad => tr("data.market.failed_to_load");
-  String get failedToLoadFavorites => tr("data.market.failed_to_load_favorites");
+  String get failedToLoadFavorites =>
+      tr("data.market.failed_to_load_favorites");
   String get noFavoritesYet => tr("data.market.no_favorites_yet");
   String get noFavoritesDesc => tr("data.market.no_favorites_desc");
   String get exploreMarket => tr("data.market.explore_market");

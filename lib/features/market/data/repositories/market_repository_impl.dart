@@ -14,8 +14,14 @@ class MarketRepositoryImpl implements MarketRepository {
   });
 
   @override
-  Future<ApiState<List<CoinEntity>>> getTopCoins({required String currency, int limit = 10}) async {
-    return await remoteDataSource.fetchMarkets(currency: currency, limit: limit);
+  Future<ApiState<List<CoinEntity>>> getTopCoins({
+    required String currency,
+    int limit = 10,
+  }) async {
+    return await remoteDataSource.fetchMarkets(
+      currency: currency,
+      limit: limit,
+    );
   }
 
   @override
@@ -24,7 +30,10 @@ class MarketRepositoryImpl implements MarketRepository {
   }
 
   @override
-  Future<void> toggleFavorite(CoinEntity coin, bool isCurrentlyFavorited) async {
+  Future<void> toggleFavorite(
+    CoinEntity coin,
+    bool isCurrentlyFavorited,
+  ) async {
     if (isCurrentlyFavorited) {
       await localDataSource.removeFavorite(coin.id);
     } else {

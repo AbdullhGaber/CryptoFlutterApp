@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/styles/app_colors.dart';
@@ -35,10 +37,7 @@ class _AppLayoutState extends State<AppLayout> {
       extendBody: true,
       body: Stack(
         children: [
-          IndexedStack(
-            index: _selectedIndex,
-            children: _screens,
-          ),
+          IndexedStack(index: _selectedIndex, children: _screens),
 
           Positioned(
             bottom: 24,
@@ -60,11 +59,51 @@ class _AppLayoutState extends State<AppLayout> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(child: _buildNavItem(0, Loc.home.navHome, 'assets/svgs/home.svg', activeColor, inactiveColor)),
-                  Expanded(child: _buildNavItem(1, Loc.home.navMarkets, 'assets/svgs/market.svg', activeColor, inactiveColor)),
-                  Expanded(child: _buildNavItem(2, Loc.home.navTrades, 'assets/svgs/trades.svg', activeColor, inactiveColor)),
-                  Expanded(child: _buildNavItem(3, Loc.home.navActivity, 'assets/svgs/activity.svg', activeColor, inactiveColor)),
-                  Expanded(child: _buildNavItem(4, Loc.home.navWallets, 'assets/svgs/wallet.svg', activeColor, inactiveColor)),
+                  Expanded(
+                    child: _buildNavItem(
+                      0,
+                      Loc.home.navHome,
+                      AppAssets.svgsHome,
+                      activeColor,
+                      inactiveColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildNavItem(
+                      1,
+                      Loc.home.navMarkets,
+                      AppAssets.svgsMarket,
+                      activeColor,
+                      inactiveColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildNavItem(
+                      2,
+                      Loc.home.navTrades,
+                      AppAssets.svgsTrades,
+                      activeColor,
+                      inactiveColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildNavItem(
+                      3,
+                      Loc.home.navActivity,
+                      AppAssets.svgsActivity,
+                      activeColor,
+                      inactiveColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: _buildNavItem(
+                      4,
+                      Loc.home.navWallets,
+                      AppAssets.svgsWallet,
+                      activeColor,
+                      inactiveColor,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -74,7 +113,13 @@ class _AppLayoutState extends State<AppLayout> {
     );
   }
 
-  Widget _buildNavItem(int index, String label, String iconPath, Color activeColor, Color inactiveColor) {
+  Widget _buildNavItem(
+    int index,
+    String label,
+    String iconPath,
+    Color activeColor,
+    Color inactiveColor,
+  ) {
     final isSelected = _selectedIndex == index;
     final color = isSelected ? activeColor : inactiveColor;
 
@@ -97,7 +142,7 @@ class _AppLayoutState extends State<AppLayout> {
             label,
             style: TextStyle(
               color: color,
-              fontSize: Responsive.text(context, 10),
+              fontSize: Responsive.text(context, AppVal.val10),
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
             maxLines: 1,

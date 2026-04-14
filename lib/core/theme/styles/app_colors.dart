@@ -23,18 +23,18 @@ class AppColors {
 
   static Color primaryText(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light
-          ? AppRawColors.textPrimaryLight
-          : AppRawColors.textPrimaryDark;
+      ? AppRawColors.textPrimaryLight
+      : AppRawColors.textPrimaryDark;
 
   static Color secondaryText(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light
-          ? AppRawColors.textSecondaryLight
-          : AppRawColors.textSecondaryDark;
+      ? AppRawColors.textSecondaryLight
+      : AppRawColors.textSecondaryDark;
 
   static Color shadow(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light
-          ? AppRawColors.shadowLight
-          : AppRawColors.shadowDark;
+      ? AppRawColors.shadowLight
+      : AppRawColors.shadowDark;
 }
 
 class AppRawColors {

@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,29 +33,61 @@ class HomeScreen extends StatelessWidget {
               color: darkHeaderColor,
               padding: EdgeInsets.only(
                 top: Responsive.padding(context, 60),
-                left: Responsive.padding(context, 24),
-                right: Responsive.padding(context, 24),
-                bottom: Responsive.padding(context, 24),
+                left: AppVal.padding24(context),
+                right: AppVal.padding24(context),
+                bottom: AppVal.padding24(context),
               ),
               child: Column(
                 children: [
                   appLayoutHeader(context),
-                  SizedBox(height: Responsive.value(context, 32)),
+                  AppVal.verticalSpace32(context),
                   GridView.count(
                     crossAxisCount: 4,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    mainAxisSpacing: Responsive.value(context, 24),
-                    crossAxisSpacing: Responsive.value(context, 16),
+                    mainAxisSpacing: Responsive.value(context, AppVal.val24),
+                    crossAxisSpacing: Responsive.value(context, AppVal.val16),
                     children: [
-                      _buildGridItem('assets/svgs/deposit.svg', Loc.home.deposit, context),
-                      _buildGridItem('assets/svgs/referral.svg', Loc.home.referral, context),
-                      _buildGridItem('assets/svgs/grid.svg', Loc.home.gridTrading, context),
-                      _buildGridItem('assets/svgs/margin.svg', Loc.home.margin, context),
-                      _buildGridItem('assets/svgs/launchpad.svg', Loc.home.launchpad, context),
-                      _buildGridItem('assets/svgs/savings.svg', Loc.home.savings, context),
-                      _buildGridItem('assets/svgs/liquid.svg', Loc.home.liquidSwap, context),
-                      _buildGridItem('assets/svgs/more.svg', Loc.home.more, context),
+                      _buildGridItem(
+                        AppAssets.svgsDeposit,
+                        Loc.home.deposit,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsReferral,
+                        Loc.home.referral,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsGrid,
+                        Loc.home.gridTrading,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsMargin,
+                        Loc.home.margin,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsLaunchpad,
+                        Loc.home.launchpad,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsSavings,
+                        Loc.home.savings,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsLiquid,
+                        Loc.home.liquidSwap,
+                        context,
+                      ),
+                      _buildGridItem(
+                        AppAssets.svgsMore,
+                        Loc.home.more,
+                        context,
+                      ),
                     ],
                   ),
                 ],
@@ -62,8 +96,8 @@ class HomeScreen extends StatelessWidget {
             Container(
               color: AppRawColors.backgroundLight,
               padding: EdgeInsets.symmetric(
-                horizontal: Responsive.padding(context, 24),
-                vertical: Responsive.padding(context, 24),
+                horizontal: AppVal.padding24(context),
+                vertical: AppVal.padding24(context),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,36 +106,48 @@ class HomeScreen extends StatelessWidget {
                     context: context,
                     title: Loc.home.p2pTrading,
                     subtitle: Loc.home.p2pTradingDesc,
-                    iconPath: 'assets/svgs/rocket.svg',
+                    iconPath: AppAssets.svgsRocket,
                   ),
-                  SizedBox(height: Responsive.value(context, 16)),
+                  AppVal.verticalSpace16(context),
 
                   _buildActionCard(
                     context: context,
                     title: Loc.home.creditDebitCard,
                     subtitle: Loc.home.creditDebitCardDesc,
-                    iconPath: 'assets/svgs/credit.svg',
+                    iconPath: AppAssets.svgsCredit,
                   ),
-                  SizedBox(height: Responsive.value(context, 32)),
+                  AppVal.verticalSpace32(context),
                   BlocBuilder<HomeCubit, HomeState>(
                     builder: (context, state) {
                       if (state is HomeLoading || state is HomeInitial) {
                         return Padding(
-                          padding: EdgeInsets.only(top: Responsive.value(context, 40)),
+                          padding: EdgeInsets.only(
+                            top: Responsive.value(context, 40),
+                          ),
                           child: const Center(
-                            child: CircularProgressIndicator(color: AppRawColors.primaryDark),
+                            child: CircularProgressIndicator(
+                              color: AppRawColors.primaryDark,
+                            ),
                           ),
                         );
                       } else if (state is HomeError) {
                         return Padding(
-                          padding: EdgeInsets.only(top: Responsive.value(context, 40)),
+                          padding: EdgeInsets.only(
+                            top: Responsive.value(context, 40),
+                          ),
                           child: Center(
-                            child: Text('Error: ${state.message}', style: const TextStyle(color: Colors.red)),
+                            child: Text(
+                              'Error: ${state.message}',
+                              style: const TextStyle(color: Colors.red),
+                            ),
                           ),
                         );
                       } else if (state is HomeLoaded) {
                         final recentCoins = state.recentCoins.take(5).toList();
-                        final topCoins = state.recentCoins.skip(5).take(5).toList();
+                        final topCoins = state.recentCoins
+                            .skip(5)
+                            .take(5)
+                            .toList();
 
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,45 +155,57 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               Loc.home.recentCoin,
                               style: TextStyle(
-                                fontSize: Responsive.text(context, 18),
+                                fontSize: Responsive.text(
+                                  context,
+                                  AppVal.val18,
+                                ),
                                 fontWeight: FontWeight.bold,
                                 color: darkHeaderColor,
                               ),
                             ),
-                            SizedBox(height: Responsive.value(context, 16)),
+                            AppVal.verticalSpace16(context),
                             SizedBox(
                               height: Responsive.value(context, 150),
                               child: ListView.separated(
                                 scrollDirection: Axis.horizontal,
                                 padding: EdgeInsets.zero,
                                 itemCount: recentCoins.length,
-                                separatorBuilder: (context, index) => SizedBox(width: Responsive.value(context, 16)),
+                                separatorBuilder: (context, index) =>
+                                    AppVal.horizontalSpace16(context),
                                 itemBuilder: (context, index) {
-                                  return CoinSparklineCard(coin: recentCoins[index]);
+                                  return CoinSparklineCard(
+                                    coin: recentCoins[index],
+                                  );
                                 },
                               ),
                             ),
 
-                            SizedBox(height: Responsive.value(context, 32)),
+                            AppVal.verticalSpace32(context),
 
                             Text(
                               'Top Coins', // Or Loc.home.topCoins if you have it
                               style: TextStyle(
-                                fontSize: Responsive.text(context, 18),
+                                fontSize: Responsive.text(
+                                  context,
+                                  AppVal.val18,
+                                ),
                                 fontWeight: FontWeight.bold,
                                 color: darkHeaderColor,
                               ),
                             ),
-                            SizedBox(height: Responsive.value(context, 16)),
+                            AppVal.verticalSpace16(context),
                             SizedBox(
                               height: Responsive.value(context, 150),
                               child: ListView.separated(
                                 scrollDirection: Axis.horizontal,
                                 padding: EdgeInsets.zero,
                                 itemCount: topCoins.length,
-                                separatorBuilder: (context, index) => SizedBox(width: Responsive.value(context, 16)),
+                                separatorBuilder: (context, index) =>
+                                    AppVal.horizontalSpace16(context),
                                 itemBuilder: (context, index) {
-                                  return CoinSparklineCard(coin: topCoins[index]);
+                                  return CoinSparklineCard(
+                                    coin: topCoins[index],
+                                  );
                                 },
                               ),
                             ),
@@ -171,15 +229,18 @@ class HomeScreen extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Transform.scale(
-            scale: 1.8,
-            child: SvgPicture.asset(
-              iconPath,
-              colorFilter: const ColorFilter.mode(AppRawColors.primaryDark, BlendMode.srcIn),
-              height: Responsive.icon(context, 28),
-              width: Responsive.icon(context, 28),
-            )
+          scale: 1.8,
+          child: SvgPicture.asset(
+            iconPath,
+            colorFilter: const ColorFilter.mode(
+              AppRawColors.primaryDark,
+              BlendMode.srcIn,
+            ),
+            height: Responsive.icon(context, 28),
+            width: Responsive.icon(context, 28),
+          ),
         ),
-        SizedBox(height: Responsive.value(context, 4)),
+        AppVal.verticalSpace4(context),
         Text(
           label,
           style: TextStyle(
@@ -203,33 +264,33 @@ class HomeScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Responsive.value(context, 24)),
+        borderRadius: AppVal.borderRadius24(context),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.03),
-            blurRadius: Responsive.value(context, 10),
+            blurRadius: Responsive.value(context, AppVal.val10),
             spreadRadius: 0,
-            offset: Offset(0, Responsive.value(context, 4)),
+            offset: Offset(0, Responsive.value(context, AppVal.val4)),
           ),
         ],
       ),
-      padding: EdgeInsets.all(Responsive.padding(context, 16)),
+      padding: EdgeInsets.all(AppVal.padding16(context)),
       child: Row(
         children: [
           Container(
-              height: Responsive.value(context, 48),
-              width: Responsive.value(context, 48),
-              padding: EdgeInsets.all(Responsive.padding(context, 8)),
-              child: Transform.scale(
-                  scale: 1.6,
-                  child: SvgPicture.asset(
-                    iconPath,
-                    height: Responsive.icon(context, 28),
-                    width: Responsive.icon(context, 28),
-                  )
-              )
+            height: Responsive.value(context, 48),
+            width: Responsive.value(context, 48),
+            padding: EdgeInsets.all(AppVal.padding8(context)),
+            child: Transform.scale(
+              scale: 1.6,
+              child: SvgPicture.asset(
+                iconPath,
+                height: Responsive.icon(context, 28),
+                width: Responsive.icon(context, 28),
+              ),
+            ),
           ),
-          SizedBox(width: Responsive.value(context, 4)),
+          AppVal.horizontalSpace4(context),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -237,12 +298,12 @@ class HomeScreen extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                    fontSize: Responsive.text(context, 16),
+                    fontSize: Responsive.text(context, AppVal.val16),
                     fontWeight: FontWeight.w600,
                     color: AppRawColors.backgroundDark,
                   ),
                 ),
-                SizedBox(height: Responsive.value(context, 4)),
+                AppVal.verticalSpace4(context),
                 Text(
                   subtitle,
                   style: TextStyle(
@@ -254,13 +315,17 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(Responsive.padding(context, 8)),
+            padding: EdgeInsets.all(AppVal.padding8(context)),
             decoration: const BoxDecoration(
               color: AppRawColors.backgroundLight,
               shape: BoxShape.circle,
             ),
-            child: Icon(Icons.arrow_forward, size: Responsive.icon(context, 16), color: AppRawColors.textSecondaryDark),
-          )
+            child: Icon(
+              Icons.arrow_forward,
+              size: AppVal.icon16(context),
+              color: AppRawColors.textSecondaryDark,
+            ),
+          ),
         ],
       ),
     );

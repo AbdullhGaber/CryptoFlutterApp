@@ -8,7 +8,10 @@ class SecureStorageManager {
   static const String _emailKey = 'user_email';
   static const String _passwordKey = 'user_password';
 
-  Future<void> saveAuthData({required String token, required String userId}) async {
+  Future<void> saveAuthData({
+    required String token,
+    required String userId,
+  }) async {
     await _storage.write(key: _tokenKey, value: token);
     await _storage.write(key: _userIdKey, value: userId);
   }
@@ -31,5 +34,4 @@ class SecureStorageManager {
     final password = await _storage.read(key: _passwordKey);
     return {'email': email, 'password': password};
   }
-
 }

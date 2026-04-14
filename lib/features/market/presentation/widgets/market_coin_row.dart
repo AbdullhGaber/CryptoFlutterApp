@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/widgets/build_sparkline.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -21,22 +22,25 @@ class MarketCoinRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isUp = coin.priceChangePercentage24h >= 0;
-    final Color trendColor = isUp ? Theme.of(context).primaryColor : AppRawColors.errorDark;
+    final Color trendColor = isUp
+        ? Theme.of(context).primaryColor
+        : AppRawColors.errorDark;
     final Color mutedTextColor = AppRawColors.textSecondaryDark;
 
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 16)),
+        padding: EdgeInsets.symmetric(vertical: AppVal.padding16(context)),
         child: Row(
           children: [
             Image.network(
               coin.image,
               height: Responsive.value(context, 40),
               width: Responsive.value(context, 40),
-              errorBuilder: (context, error, stackTrace) => const Icon(Icons.error, color: Colors.grey),
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.error, color: Colors.grey),
             ),
-            SizedBox(width: Responsive.value(context, 16)),
+            AppVal.horizontalSpace16(context),
             Expanded(
               flex: 3,
               child: Column(
@@ -44,14 +48,18 @@ class MarketCoinRow extends StatelessWidget {
                 children: [
                   Text(
                     coin.name,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: Responsive.value(context, 4)),
+                  AppVal.verticalSpace4(context),
                   Text(
                     coin.symbol,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: mutedTextColor),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: mutedTextColor),
                   ),
                 ],
               ),
@@ -72,9 +80,11 @@ class MarketCoinRow extends StatelessWidget {
                 children: [
                   Text(
                     '\$${coin.currentPrice.toStringAsFixed(2)}',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  SizedBox(height: Responsive.value(context, 4)),
+                  AppVal.verticalSpace4(context),
                   Text(
                     '${isUp ? '+' : ''}${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -86,14 +96,14 @@ class MarketCoinRow extends StatelessWidget {
               ),
             ),
 
-            SizedBox(width: Responsive.value(context, 8)),
+            AppVal.horizontalSpace8(context),
 
             GestureDetector(
               onTap: onFavoriteToggle,
               child: Icon(
                 isFavorite ? Icons.star : Icons.star_border,
                 color: isFavorite ? AppRawColors.favoriteDark : mutedTextColor,
-                size: Responsive.icon(context, 24),
+                size: AppVal.icon24(context),
               ),
             ),
           ],

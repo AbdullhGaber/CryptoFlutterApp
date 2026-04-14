@@ -1,3 +1,5 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/theme/styles/app_colors.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
@@ -26,7 +28,7 @@ class WalletScreen extends StatelessWidget {
             child: Opacity(
               opacity: 0.3,
               child: Image.asset(
-                'assets/images/splash.png',
+                AppAssets.imagesSplash,
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
               ),
@@ -44,7 +46,9 @@ class WalletScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.1),
+                    Theme.of(
+                      context,
+                    ).scaffoldBackgroundColor.withValues(alpha: 0.1),
                     Theme.of(context).scaffoldBackgroundColor,
                   ],
                 ),
@@ -55,8 +59,8 @@ class WalletScreen extends StatelessWidget {
           SafeArea(
             child: SingleChildScrollView(
               padding: EdgeInsets.only(
-                left: Responsive.padding(context, 24),
-                right: Responsive.padding(context, 24),
+                left: AppVal.padding24(context),
+                right: AppVal.padding24(context),
                 top: Responsive.padding(context, 40),
                 bottom: Responsive.padding(context, 120),
               ),
@@ -70,17 +74,17 @@ class WalletScreen extends StatelessWidget {
                         Loc.wallet.currentBalance,
                         style: TextStyle(
                           color: mutedTextColor,
-                          fontSize: Responsive.text(context, 14),
+                          fontSize: Responsive.text(context, AppVal.val14),
                         ),
                       ),
                       Icon(
                         Icons.visibility_off_outlined,
                         color: mutedTextColor,
-                        size: Responsive.icon(context, 20),
+                        size: AppVal.icon20(context),
                       ),
                     ],
                   ),
-                  SizedBox(height: Responsive.value(context, 8)),
+                  AppVal.verticalSpace8(context),
 
                   Text(
                     '40,059.83',
@@ -88,12 +92,12 @@ class WalletScreen extends StatelessWidget {
                       fontSize: Responsive.text(context, 36),
                     ),
                   ),
-                  SizedBox(height: Responsive.value(context, 4)),
+                  AppVal.verticalSpace4(context),
                   Text(
                     '\$468,554.23',
                     style: TextStyle(
                       color: mutedTextColor,
-                      fontSize: Responsive.text(context, 16),
+                      fontSize: Responsive.text(context, AppVal.val16),
                     ),
                   ),
 
@@ -103,31 +107,31 @@ class WalletScreen extends StatelessWidget {
                     height: Responsive.value(context, 52),
                     decoration: BoxDecoration(
                       color: surfaceDark,
-                      borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
+                      borderRadius: AppVal.borderRadius16(context),
                     ),
                     child: Row(
                       children: [
                         _buildActionTab(
                           context: context,
-                          title: Loc.wallet.deposit, 
-                          isActive: true, 
-                          activeColor: primaryMint, 
+                          title: Loc.wallet.deposit,
+                          isActive: true,
+                          activeColor: primaryMint,
                           activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
                         _buildActionTab(
                           context: context,
-                          title: Loc.wallet.withdraw, 
-                          isActive: false, 
-                          activeColor: primaryMint, 
+                          title: Loc.wallet.withdraw,
+                          isActive: false,
+                          activeColor: primaryMint,
                           activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
                         _buildActionTab(
                           context: context,
-                          title: Loc.wallet.transfer, 
-                          isActive: false, 
-                          activeColor: primaryMint, 
+                          title: Loc.wallet.transfer,
+                          isActive: false,
+                          activeColor: primaryMint,
                           activeTextColor: AppRawColors.backgroundDark,
                           inactiveTextColor: mutedTextColor,
                         ),
@@ -135,14 +139,11 @@ class WalletScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: Responsive.value(context, 32)),
+                  AppVal.verticalSpace32(context),
 
                   Column(
                     children: MarketCoinType.values.map((coin) {
-                      return WalletCoinRow(
-                        coin: coin,
-                        onTap: () {},
-                      );
+                      return WalletCoinRow(coin: coin, onTap: () {});
                     }).toList(),
                   ),
                 ],
@@ -156,7 +157,7 @@ class WalletScreen extends StatelessWidget {
 
   Widget _buildActionTab({
     required BuildContext context,
-    required String title, 
+    required String title,
     required bool isActive,
     required Color activeColor,
     required Color activeTextColor,
@@ -167,14 +168,14 @@ class WalletScreen extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isActive ? activeColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
+          borderRadius: AppVal.borderRadius16(context),
         ),
         child: Text(
           title,
           style: TextStyle(
             color: isActive ? activeTextColor : inactiveTextColor,
             fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-            fontSize: Responsive.text(context, 14),
+            fontSize: Responsive.text(context, AppVal.val14),
           ),
         ),
       ),

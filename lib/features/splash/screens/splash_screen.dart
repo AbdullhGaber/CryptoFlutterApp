@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_project_2/core/routing/app_router.dart';
@@ -12,7 +13,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
 
   @override
@@ -43,14 +45,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            'assets/images/splash.png',
-            fit: BoxFit.cover,
-          ),
+          Image.asset(AppAssets.imagesSplash, fit: BoxFit.cover),
 
           Center(
             child: Lottie.asset(
-              'assets/lottie/splash.json',
+              AppAssets.lottieSplash,
               width: Responsive.value(context, 220),
               controller: _animationController,
               onLoaded: (composition) {

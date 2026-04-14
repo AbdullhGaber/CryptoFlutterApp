@@ -19,7 +19,8 @@ enum OrderStatus {
   filled,
   cancelled;
 
-  String get label => this == OrderStatus.filled ? Loc.activity.filled : Loc.activity.cancelled;
+  String get label =>
+      this == OrderStatus.filled ? Loc.activity.filled : Loc.activity.cancelled;
 
   Color getColor(BuildContext context) {
     return this == OrderStatus.filled

@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/helpers/responsive.dart';
 import '../../../../core/theme/styles/app_colors.dart';
@@ -22,9 +23,9 @@ class ActivityRowItem extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
+      borderRadius: AppVal.borderRadius16(context),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: Responsive.padding(context, 16)),
+        padding: EdgeInsets.symmetric(vertical: AppVal.padding16(context)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,11 +42,11 @@ class ActivityRowItem extends StatelessWidget {
                 style: TextStyle(
                   color: tradeColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: Responsive.text(context, 14),
+                  fontSize: Responsive.text(context, AppVal.val14),
                 ),
               ),
             ),
-            SizedBox(width: Responsive.value(context, 16)),
+            AppVal.horizontalSpace16(context),
 
             Expanded(
               child: Column(
@@ -57,12 +58,30 @@ class ActivityRowItem extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: Responsive.value(context, 8)),
-                  Text(Loc.activity.amount, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
-                  SizedBox(height: Responsive.value(context, 4)),
-                  Text(Loc.activity.price, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
-                  SizedBox(height: Responsive.value(context, 4)),
-                  Text(Loc.activity.status, style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 13))),
+                  AppVal.verticalSpace8(context),
+                  Text(
+                    Loc.activity.amount,
+                    style: TextStyle(
+                      color: mutedTextColor,
+                      fontSize: Responsive.text(context, 13),
+                    ),
+                  ),
+                  AppVal.verticalSpace4(context),
+                  Text(
+                    Loc.activity.price,
+                    style: TextStyle(
+                      color: mutedTextColor,
+                      fontSize: Responsive.text(context, 13),
+                    ),
+                  ),
+                  AppVal.verticalSpace4(context),
+                  Text(
+                    Loc.activity.status,
+                    style: TextStyle(
+                      color: mutedTextColor,
+                      fontSize: Responsive.text(context, 13),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -74,13 +93,20 @@ class ActivityRowItem extends StatelessWidget {
                   children: [
                     Text(
                       activity.date,
-                      style: TextStyle(color: mutedTextColor, fontSize: Responsive.text(context, 12)),
+                      style: TextStyle(
+                        color: mutedTextColor,
+                        fontSize: Responsive.text(context, AppVal.val12),
+                      ),
                     ),
-                    SizedBox(width: Responsive.value(context, 4)),
-                    Icon(Icons.arrow_forward_ios, color: mutedTextColor, size: Responsive.icon(context, 12)),
+                    AppVal.horizontalSpace4(context),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: mutedTextColor,
+                      size: Responsive.icon(context, AppVal.val12),
+                    ),
                   ],
                 ),
-                SizedBox(height: Responsive.value(context, 8)),
+                AppVal.verticalSpace8(context),
 
                 RichText(
                   text: TextSpan(
@@ -98,17 +124,23 @@ class ActivityRowItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: Responsive.value(context, 4)),
+                AppVal.verticalSpace4(context),
 
                 Text(
                   activity.price,
-                  style: TextStyle(color: Colors.white, fontSize: Responsive.text(context, 13)),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: Responsive.text(context, 13),
+                  ),
                 ),
-                SizedBox(height: Responsive.value(context, 4)),
+                AppVal.verticalSpace4(context),
 
                 Text(
                   activity.status.label,
-                  style: TextStyle(color: statusColor, fontSize: Responsive.text(context, 13)),
+                  style: TextStyle(
+                    color: statusColor,
+                    fontSize: Responsive.text(context, 13),
+                  ),
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import '../../core/theme/styles/app_colors.dart';
 import '../../core/helpers/responsive.dart';
@@ -35,10 +36,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              widget.label,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            Text(widget.label, style: Theme.of(context).textTheme.bodyMedium),
             if (widget.actionText != null)
               GestureDetector(
                 onTap: widget.onActionTap,
@@ -46,14 +44,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   widget.actionText!,
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontSize: Responsive.text(context, 14),
+                    fontSize: Responsive.text(context, AppVal.val14),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
           ],
         ),
-        SizedBox(height: Responsive.value(context, 8)),
+        AppVal.verticalSpace8(context),
 
         TextFormField(
           controller: widget.controller,
@@ -62,15 +60,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(Responsive.value(context, 16)),
-              borderSide: const BorderSide(color: Colors.orange, width: 1.5), 
+              borderRadius: AppVal.borderRadius16(context),
+              borderSide: const BorderSide(color: Colors.orange, width: 1.5),
             ),
             suffixIcon: widget.isPassword
                 ? IconButton(
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
                       color: AppRawColors.textSecondaryDark,
-                      size: Responsive.icon(context, 20),
+                      size: AppVal.icon20(context),
                     ),
                     onPressed: () {
                       setState(() {

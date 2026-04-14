@@ -33,14 +33,16 @@ Future<ApiState<T>> safeApiCall<T>(Future<T> Function() apiCall) async {
     return switch (e.type) {
       DioExceptionType.connectionTimeout ||
       DioExceptionType.sendTimeout ||
-      DioExceptionType.receiveTimeout =>
-        const ApiError('Connection timed out. Please try again.'),
-      DioExceptionType.connectionError =>
-        const ApiError('No internet connection. Please check your network.'),
-      DioExceptionType.badResponse =>
-        ApiError('Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}'),
-      DioExceptionType.cancel =>
-        const ApiError('Request was cancelled.'),
+      DioExceptionType.receiveTimeout => const ApiError(
+        'Connection timed out. Please try again.',
+      ),
+      DioExceptionType.connectionError => const ApiError(
+        'No internet connection. Please check your network.',
+      ),
+      DioExceptionType.badResponse => ApiError(
+        'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}',
+      ),
+      DioExceptionType.cancel => const ApiError('Request was cancelled.'),
       _ => ApiError('Network error: ${e.message}'),
     };
   } on SocketException {

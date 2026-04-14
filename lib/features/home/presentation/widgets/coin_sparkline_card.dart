@@ -1,3 +1,4 @@
+import 'package:flutter_project_2/core/utils/app_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_2/core/widgets/build_sparkline.dart';
 import '../../../../core/helpers/responsive.dart';
@@ -11,17 +12,19 @@ class CoinSparklineCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isUp = coin.priceChangePercentage24h >= 0;
-    final Color trendColor = isUp ? const Color(0xFF00C076) : const Color(0xFFFF6838);
+    final Color trendColor = isUp
+        ? const Color(0xFF00C076)
+        : const Color(0xFFFF6838);
     return Container(
       width: Responsive.value(context, 160),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Responsive.value(context, 20)),
+        borderRadius: AppVal.borderRadius20(context),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: Responsive.value(context, 10),
-            offset: Offset(0, Responsive.value(context, 4)),
+            blurRadius: Responsive.value(context, AppVal.val10),
+            offset: Offset(0, Responsive.value(context, AppVal.val4)),
           ),
         ],
       ),
@@ -30,7 +33,7 @@ class CoinSparklineCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(Responsive.padding(context, 16)),
+            padding: EdgeInsets.all(AppVal.padding16(context)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -42,7 +45,7 @@ class CoinSparklineCard extends StatelessWidget {
                       child: Text(
                         coin.currentPrice.toStringAsFixed(2),
                         style: TextStyle(
-                          fontSize: Responsive.text(context, 16),
+                          fontSize: Responsive.text(context, AppVal.val16),
                           fontWeight: FontWeight.bold,
                           color: trendColor,
                         ),
@@ -52,20 +55,21 @@ class CoinSparklineCard extends StatelessWidget {
                     ),
                     Image.network(
                       coin.image,
-                      height: Responsive.icon(context, 24),
-                      width: Responsive.icon(context, 24),
-                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.error, size: 24),
+                      height: AppVal.icon24(context),
+                      width: AppVal.icon24(context),
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error, size: 24),
                     ),
                   ],
                 ),
-                SizedBox(height: Responsive.value(context, 8)),
+                AppVal.verticalSpace8(context),
                 Row(
                   children: [
                     Flexible(
                       child: Text(
                         '${coin.symbol.toUpperCase()}/BUSD',
                         style: TextStyle(
-                          fontSize: Responsive.text(context, 12),
+                          fontSize: Responsive.text(context, AppVal.val12),
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1B232A),
                         ),
@@ -73,7 +77,7 @@ class CoinSparklineCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    SizedBox(width: Responsive.value(context, 4)),
+                    AppVal.horizontalSpace4(context),
                     Text(
                       '${isUp ? '+' : ''}${coin.priceChangePercentage24h.toStringAsFixed(2)}%',
                       style: TextStyle(

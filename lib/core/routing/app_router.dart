@@ -19,25 +19,16 @@ class AppRouter {
   static final router = GoRouter(
     initialLocation: appLayout,
     routes: [
-      GoRoute(
-        path: splash,
-        builder: (context, state) => const SplashScreen(),
-      ),
+      GoRoute(path: splash, builder: (context, state) => const SplashScreen()),
 
       GoRoute(
         path: onboarding,
         builder: (context, state) => const OnboardingScreen(),
       ),
 
-      GoRoute(
-        path: auth,
-        builder: (context, state) => const AuthScreen(),
-      ),
+      GoRoute(path: auth, builder: (context, state) => const AuthScreen()),
 
-      GoRoute(
-        path: appLayout,
-        builder: (context, state) => const AppLayout(),
-      ),
+      GoRoute(path: appLayout, builder: (context, state) => const AppLayout()),
 
       GoRoute(
         path: settings,
